@@ -1,0 +1,161 @@
+/* skoneczko.com stylesheet */
+
+// var declarations
+$main-font-color: #333;
+$main-toolbar-color: whitesmoke;
+$toolbar-height: 3em;
+$mobile-px: 920px;
+$number-of-mobile-items: 3;
+$blog-date-color: #777;
+
+// mixins
+
+@mixin nice-contain {
+    width: 95%;
+    margin: 0 auto;
+    
+    @media screen and (min-width: $mobile-px) {
+        width: 80%;
+    }
+}
+
+// style
+
+body {
+    
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    color: $main-font-color;
+    
+}
+
+header {
+    
+    background-color: $main-toolbar-color;
+    
+    h1 {
+        margin: 0;
+        float: left;
+        line-height: ($toolbar-height/2); // if we use em, h1 goes too far, so we need to half it
+    }
+    
+}
+
+.header-container {
+    @include nice-contain;
+    position: relative;
+}
+
+nav {
+    
+    height: $toolbar-height;
+    position: relative;
+    
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        line-height: $toolbar-height;
+
+        
+        
+        li {
+            float: right;
+            background-color: $main-toolbar-color;
+            
+            a {
+                text-decoration: none;
+                color: $main-font-color;
+                display: inline-block;
+                padding: 0 1em;
+                
+                &:hover {
+                    color: darken($main-font-color, 40%);
+                    background-color: darken($main-toolbar-color, 10%);
+                    text-decoration: none;
+                }
+                
+            }
+        }
+    }
+    
+    .desktop-ul {
+        display: none;
+        position: absolute;
+        right: 0;
+        @media screen and (min-width: $mobile-px) {
+            display: block;
+            top: 0;
+        }
+    }
+    
+}
+
+.mobile-nav {
+    display: block;
+    @media screen and (min-width: $mobile-px) {
+        display: none;
+    }
+    
+    ul {
+        margin: 0 auto;
+        
+        li {
+            float: none;
+            display: inline-block;
+            width: 23%;
+            
+            a {
+                width: 100%;
+                padding: 0;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.toolbar-btn {
+    position: absolute;
+    right: 0;
+    height: ($toolbar-height * 0.8);
+    margin-top: ($toolbar-height/4); // magically works!!!
+    display: block;
+    font-weight: bold;
+    z-index: 10;
+    display: block;
+    
+    @media screen and (min-width: $mobile-px) {
+        display: none;
+    }
+}
+
+.surname-finish {
+    display: none;
+    
+    @media screen and (min-width: $mobile-px) {
+        display: inline;
+    }
+}
+
+.main-container {
+    @include nice-contain;
+}
+
+.date-posted {
+    color: $blog-date-color;
+}
+
+a {
+    color: blue;
+    text-decoration: none;
+    
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.warn {
+    background-color: lighten(red, 10%);
+    padding: 2px;
+}
