@@ -1,0 +1,10 @@
+// mixins
+
+@mixin nice-contain {
+    width: 95%;
+    margin: 0 auto;
+    
+    @media screen and (min-width: $mobile-px) {
+        width: 80%;
+    }
+}

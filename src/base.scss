@@ -1,23 +1,8 @@
 /* skoneczko.com stylesheet */
 
-// var declarations
-$main-font-color: #333;
-$main-toolbar-color: whitesmoke;
-$toolbar-height: 3em;
-$mobile-px: 920px;
-$number-of-mobile-items: 3;
-$blog-date-color: #777;
+@import "vars";
 
-// mixins
-
-@mixin nice-contain {
-    width: 95%;
-    margin: 0 auto;
-    
-    @media screen and (min-width: $mobile-px) {
-        width: 80%;
-    }
-}
+@import "mixins";
 
 // style
 
