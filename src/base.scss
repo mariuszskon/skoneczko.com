@@ -145,3 +145,19 @@ a {
     background-color: lighten(red, 10%);
     padding: 2px;
 }
+
+@include keyframes(fadeinleft) {
+    0% {
+        opacity: 0;
+        margin-left: -100%;
+    }
+    
+    100% {
+        opacity: 1;
+        margin-left: 0;
+    }
+}
+
+.skills  {
+    @include animation(fadeinleft, 1s, 1s);
+}

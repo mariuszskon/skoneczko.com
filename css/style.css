@@ -139,4 +139,35 @@ a:hover {
   padding: 2px;
 }
 
+@-webkit-keyframes fadeinleft {
+  0% {
+    opacity: 0;
+    margin-left: -100%;
+  }
+  100% {
+    opacity: 1;
+    margin-left: 0;
+  }
+}
+@keyframes fadeinleft {
+  0% {
+    opacity: 0;
+    margin-left: -100%;
+  }
+  100% {
+    opacity: 1;
+    margin-left: 0;
+  }
+}
+.skills {
+  -webkit-animation-name: fadeinleft;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  -webkit-animation-delay: 1s;
+  animation-name: fadeinleft;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-delay: 1s;
+}
+
 /*# sourceMappingURL=style.css.map */
