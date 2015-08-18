@@ -43,7 +43,7 @@
             
             <div class="main-container">
                 <!--[if lt IE 9]>
-                    <p class="warn">You are using Internet Explorer lower than 9.<br />Please <a href="http://browsehappy.com/">upgrade your browser</a> to make the most of the web.</p>
+                    <p class="warn">You are using Internet Explorer lower than 9.<br>Please <a href="http://browsehappy.com/">upgrade your browser</a> to make the most of the web.</p>
                 <![endif]-->
                 <p class="date-posted">Posted on <?php echo $postdate; ?></p>
                 <article>
