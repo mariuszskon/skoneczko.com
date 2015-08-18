@@ -8,3 +8,8 @@
         width: 80%;
     }
 }
+
+@mixin transition($args...) {
+    -webkit-transition: $args;
+    transition: $args;
+}

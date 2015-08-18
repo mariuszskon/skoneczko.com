@@ -54,6 +54,7 @@ nav {
                 color: $main-font-color;
                 display: inline-block;
                 padding: 0 1em;
+                @include transition(background-color 1s, color 1s);
                 
                 &:hover {
                     color: darken($main-font-color, 40%);
