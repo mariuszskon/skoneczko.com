@@ -161,3 +161,13 @@ a {
 .skills  {
     @include animation(fadeinleft, 1s, 1s);
 }
+
+.social-buttons {
+    list-style: none;
+    padding-left: 0.5em;
+    
+    li {
+        float: left;
+        margin-left: 1em;
+    }
+}

@@ -170,4 +170,13 @@ a:hover {
   animation-delay: 1s;
 }
 
+.social-buttons {
+  list-style: none;
+  padding-left: 0.5em;
+}
+.social-buttons li {
+  float: left;
+  margin-left: 1em;
+}
+
 /*# sourceMappingURL=style.css.map */
