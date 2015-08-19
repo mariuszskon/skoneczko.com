@@ -46,10 +46,12 @@
                     <p class="warn">You are using Internet Explorer lower than 9.<br />Please <a href="http://browsehappy.com/">upgrade your browser</a> to make the most of the web.</p>
                 <![endif]-->
                 <h2>Latest posts</h2>
+                <h3><a href="2015/08/19/sass.php">Sass is awesome</a></h3>
+                <div class="date-posted">Posted on 19th August 2015</div><br>
                 <h3><a href="2015/08/15/browsersupport.php">Web browser support</a></h3>
-                <div class="date-posted">Posted on 15th August 2015</div><br />
+                <div class="date-posted">Posted on 15th August 2015</div><br>
                 <h3><a href="2015/08/15/helloworld.php">Hello World</a></h3>
-                <div class="date-posted">Posted on 15th August 2015</div><br />
+                <div class="date-posted">Posted on 15th August 2015</div><br>
             </div>
         </div>
     
