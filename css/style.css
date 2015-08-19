@@ -45,11 +45,11 @@ nav ul li a {
   color: #333;
   display: inline-block;
   padding: 0 1em;
-  -webkit-transition: background-color 1s, color 1s;
-  transition: background-color 1s, color 1s;
+  -webkit-transition: background-color 0.5s, color 0.5s;
+  transition: background-color 0.5s, color 0.5s;
 }
 nav ul li a:hover {
-  color: black;
+  color: blue;
   background-color: gainsboro;
   text-decoration: none;
 }
@@ -129,9 +129,11 @@ nav .desktop-ul {
 a {
   color: blue;
   text-decoration: none;
+  -webkit-transition: color, 0.5s;
+  transition: color, 0.5s;
 }
 a:hover {
-  text-decoration: underline;
+  color: #6666ff;
 }
 
 .warn {
@@ -170,13 +172,25 @@ a:hover {
   animation-delay: 1s;
 }
 
+code {
+  background-color: #333;
+  color: white;
+  border-radius: 6px;
+  padding: 3px;
+}
+
+pre code {
+  display: block;
+  padding: 10px;
+}
+
 .social-buttons {
   list-style: none;
   padding-left: 0.5em;
 }
 .social-buttons li {
   float: left;
-  margin-left: 1em;
+  margin: 0 0 1em 1em;
 }
 
 /*# sourceMappingURL=style.css.map */

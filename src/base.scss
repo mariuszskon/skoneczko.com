@@ -54,10 +54,11 @@ nav {
                 color: $main-font-color;
                 display: inline-block;
                 padding: 0 1em;
-                @include transition(background-color 1s, color 1s);
+                @include transition(background-color 0.5s, color 0.5s);
                 
                 &:hover {
-                    color: darken($main-font-color, 40%);
+                    //color: darken($main-font-color, 40%);
+                    color: $navbar-hover-text-color;
                     background-color: darken($main-toolbar-color, 10%);
                     text-decoration: none;
                 }
@@ -135,9 +136,10 @@ nav {
 a {
     color: blue;
     text-decoration: none;
+    @include transition(color, 0.5s);
     
     &:hover {
-        text-decoration: underline;
+        color: lighten(blue, 20%);
     }
 }
 
@@ -162,12 +164,24 @@ a {
     @include animation(fadeinleft, 1s, 1s);
 }
 
+code {
+    background-color: #333;
+    color: white;
+    border-radius: 6px;
+    padding: 3px;
+}
+
+pre code { // for bigger code "blocks"
+    display: block; // so that the background-color works nicely
+    padding: 10px;
+}
+
 .social-buttons {
     list-style: none;
     padding-left: 0.5em;
     
     li {
         float: left;
-        margin-left: 1em;
+        margin: 0 0 1em 1em;
     }
 }
