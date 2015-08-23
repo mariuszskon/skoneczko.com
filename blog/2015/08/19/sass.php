@@ -1,6 +1,6 @@
-<?php $pagetitle = "Sass is awesome" ?>
-<?php $postdate = "19th August 2015" ?>
-<?php require "../../../includes/header.php" ?>
+<?php $pagetitle = "Sass is awesome";
+$postdate = "19th August 2015";
+require "../../../includes/header.php"; ?>
 <p>Recently, I started using <a href="http://sass-lang.com">Sass</a> (the SCSS flavour). Now I simply cannot go back.</p>
 <p>For the uninitiated, Sass is a CSS preprocessor. That means you write Sass code, and it "complies" into standard, old-fashioned CSS. If you would like an easy way to tryout Sass, I recommend <a href="http://sassmeister.com/">Sassmeister</a>. So what are some killer features of Sass?</p>
 <h2>Nesting</h2>

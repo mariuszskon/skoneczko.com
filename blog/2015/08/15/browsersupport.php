@@ -1,6 +1,6 @@
-<?php $pagetitle = "Web browser support" ?>
-<?php $postdate = "15th August 2015" ?>
-<?php require "../../../includes/header.php" ?>
+<?php $pagetitle = "Web browser support";
+$postdate = "15th August 2015";
+require "../../../includes/header.php"; ?>
 <p>So, as a web developer, the web browsers are the best and worst part of development.<br>
     They are the best, because they render code in a pretty fashion and usually with lots of nice features, but they are the worst when they are outdated. Outdated browsers can't handle awesome shiny new stuff (which is <strong>the</strong> best part of web development), but they also do things differently to modern browsers forcing you to work around issues that you shouldn't have to. Additionally, the old browsers make it a painful to have "mobile first" layouts, because they don't support media queries! Now, you can guess who the offender is. </p>
 <p>Internet Explorer<br>
