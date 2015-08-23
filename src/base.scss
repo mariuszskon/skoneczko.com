@@ -7,16 +7,13 @@
 // style
 
 body {
-    
     margin: 0;
     padding: 0;
     font-family: sans-serif;
     color: $main-font-color;
-    
 }
 
 header {
-    
     background-color: $main-toolbar-color;
     
     h1 {
@@ -24,7 +21,6 @@ header {
         float: left;
         line-height: ($toolbar-height/2); // if we use em, h1 goes too far, so we need to half it
     }
-    
 }
 
 .header-container {
@@ -33,7 +29,6 @@ header {
 }
 
 nav {
-    
     height: $toolbar-height;
     position: relative;
     
@@ -43,8 +38,6 @@ nav {
         list-style: none;
         line-height: $toolbar-height;
 
-        
-        
         li {
             float: right;
             background-color: $main-toolbar-color;
@@ -57,7 +50,6 @@ nav {
                 @include transition(background-color 0.5s, color 0.5s);
                 
                 &:hover {
-                    //color: darken($main-font-color, 40%);
                     color: $navbar-hover-text-color;
                     background-color: darken($main-toolbar-color, 10%);
                     text-decoration: none;
@@ -76,7 +68,6 @@ nav {
             top: 0;
         }
     }
-    
 }
 
 .mobile-nav {
@@ -99,21 +90,6 @@ nav {
                 text-align: center;
             }
         }
-    }
-}
-
-.toolbar-btn {
-    position: absolute;
-    right: 0;
-    height: ($toolbar-height * 0.8);
-    margin-top: ($toolbar-height/4); // magically works!!!
-    display: block;
-    font-weight: bold;
-    z-index: 10;
-    display: block;
-    
-    @media screen and (min-width: $mobile-px) {
-        display: none;
     }
 }
 
