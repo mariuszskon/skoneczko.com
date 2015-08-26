@@ -105,6 +105,15 @@ nav {
     @include nice-contain;
 }
 
+img.left {
+    float: left;
+    padding-right: 1.5em;
+}
+
+.float-break {
+    clear: both;
+}
+
 .date-posted {
     color: $blog-date-color;
 }
