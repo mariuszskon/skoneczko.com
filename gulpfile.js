@@ -7,7 +7,7 @@ var autoprefixer = require('gulp-autoprefixer');
 gulp.task('sass', function() {
     gulp.src('src/src/base.scss')
         .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
-        .pipe(autoprefixer({browsers: ['last 3 version']})) // move up later
+        .pipe(autoprefixer({browsers: ['last 3 version']}))
         .pipe(rename('style.css'))
         .pipe(gulp.dest('dist/css'))
         .pipe(rename({suffix: '.min'}))

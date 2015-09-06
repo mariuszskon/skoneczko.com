@@ -9,11 +9,6 @@
     }
 }
 
-@mixin transition($args...) {
-    -webkit-transition: $args;
-    transition: $args;
-}
-
 @mixin animation($animname, $duration, $delay) {
     animation-name: $animname;
     animation-duration: $duration;
