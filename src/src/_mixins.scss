@@ -14,21 +14,7 @@
     transition: $args;
 }
 
-@mixin keyframes($name) {
-    @-webkit-keyframes #{$name} {
-        @content;
-    }
-    
-    @keyframes #{$name} {
-        @content;
-    }
-}
-
 @mixin animation($animname, $duration, $delay) {
-    -webkit-animation-name: $animname;
-    -webkit-animation-duration: $duration;
-    -webkit-animation-fill-mode: both;
-    -webkit-animation-delay: $delay;
     animation-name: $animname;
     animation-duration: $duration;
     animation-fill-mode: both;

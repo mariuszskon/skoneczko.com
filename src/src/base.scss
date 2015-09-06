@@ -133,7 +133,7 @@ a {
     padding: 2px;
 }
 
-@include keyframes(fadeinleft) {
+@keyframes fadeinleft {
     0% {
         opacity: 0;
         margin-left: -100%;
