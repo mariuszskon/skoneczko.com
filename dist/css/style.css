@@ -9,6 +9,7 @@ body {
 header {
   background-color: whitesmoke;
 }
+
 header h1 {
   margin: 0;
   float: left;
@@ -20,6 +21,7 @@ header h1 {
   margin: 0 auto;
   position: relative;
 }
+
 @media screen and (min-width: 920px) {
   .header-container {
     width: 80%;
@@ -30,34 +32,39 @@ nav {
   height: 3em;
   position: relative;
 }
+
 nav ul {
   margin: 0;
   padding: 0;
   list-style: none;
   line-height: 3em;
 }
+
 nav ul li {
   float: right;
   background-color: whitesmoke;
 }
+
 nav ul li a {
   text-decoration: none;
   color: #333;
   display: inline-block;
   padding: 0 1em;
-  -webkit-transition: background-color 0.5s, color 0.5s;
   transition: background-color 0.5s, color 0.5s;
 }
+
 nav ul li a:hover {
   color: blue;
   background-color: gainsboro;
   text-decoration: none;
 }
+
 nav .desktop-ul {
   display: none;
   position: absolute;
   right: 0;
 }
+
 @media screen and (min-width: 920px) {
   nav .desktop-ul {
     display: block;
@@ -68,19 +75,23 @@ nav .desktop-ul {
 .mobile-nav {
   display: block;
 }
+
 @media screen and (min-width: 920px) {
   .mobile-nav {
     display: none;
   }
 }
+
 .mobile-nav ul {
   margin: 0 auto;
 }
+
 .mobile-nav ul li {
   float: none;
   display: inline-block;
   width: 23%;
 }
+
 .mobile-nav ul li a {
   width: 100%;
   padding: 0;
@@ -90,6 +101,7 @@ nav .desktop-ul {
 .surname-finish {
   display: none;
 }
+
 @media screen and (min-width: 920px) {
   .surname-finish {
     display: inline;
@@ -100,6 +112,7 @@ nav .desktop-ul {
   width: 95%;
   margin: 0 auto;
 }
+
 @media screen and (min-width: 920px) {
   .main-container {
     width: 80%;
@@ -122,9 +135,9 @@ img.left {
 a {
   color: blue;
   text-decoration: none;
-  -webkit-transition: color, 0.5s;
   transition: color, 0.5s;
 }
+
 a:hover {
   color: #6666ff;
 }
@@ -144,6 +157,7 @@ a:hover {
     margin-left: 0;
   }
 }
+
 @keyframes fadeinleft {
   0% {
     opacity: 0;
@@ -154,15 +168,16 @@ a:hover {
     margin-left: 0;
   }
 }
+
 .skills {
   -webkit-animation-name: fadeinleft;
+          animation-name: fadeinleft;
   -webkit-animation-duration: 1s;
+          animation-duration: 1s;
   -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
   -webkit-animation-delay: 1s;
-  animation-name: fadeinleft;
-  animation-duration: 1s;
-  animation-fill-mode: both;
-  animation-delay: 1s;
+          animation-delay: 1s;
 }
 
 code {
@@ -181,9 +196,8 @@ pre code {
   list-style: none;
   padding-left: 0.5em;
 }
+
 .social-buttons li {
   float: left;
   margin: 0 0 1em 1em;
 }
-
-/*# sourceMappingURL=style.css.map */
