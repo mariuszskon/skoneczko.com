@@ -1,0 +1,18 @@
+{
+  "name": "skoneczko.com",
+  "version": "0.0.0",
+  "description": "skoneczko.com website source",
+  "main": "dist/index.html",
+  "scripts": {
+    "test": "echo \"Hello!\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mariuszskon/skoneczko.com.git"
+  },
+  "author": "Mariusz Skoneczko",
+  "license": "None",
+  "bugs": {
+    "url": "https://github.com/mariuszskon/skoneczko.com/issues"
+  }
+}
