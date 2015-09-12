@@ -16,7 +16,7 @@ gulp.task('sass', function() {
         .pipe(gulp.dest('dist/css'))
         .pipe(rename({suffix: '.min'}))
         .pipe(minifycss())
-        .pipe(gulp.dest('dist/css'))
+        .pipe(gulp.dest('dist/css'));
 });
 
 gulp.task('html', function() {
@@ -39,5 +39,5 @@ gulp.task('images', function() {
         .pipe(changed('dist/img/'))
         .pipe(debug({title: 'gulp-debug [images]'}))
         .pipe(imagemin())
-        .pipe(gulp.dest('dist/img/'))
+        .pipe(gulp.dest('dist/img/'));
 });
