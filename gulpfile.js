@@ -5,6 +5,7 @@ var minifycss = require('gulp-minify-css');
 var autoprefixer = require('gulp-autoprefixer');
 var debug = require('gulp-debug');
 var changed = require('gulp-changed');
+var imagemin = require('gulp-imagemin');
 
 gulp.task('sass', function() {
     gulp.src('src/src/base.scss')
@@ -31,4 +32,12 @@ gulp.task('blog', function() {
         .pipe(changed('dist/blog/'))
         .pipe(debug({title: 'gulp-debug [blog]'}))
         .pipe(gulp.dest('dist/blog/'));
+});
+
+gulp.task('images', function() {
+    gulp.src('src/img/**/*')
+        .pipe(changed('dist/img/'))
+        .pipe(debug({title: 'gulp-debug [images]'}))
+        .pipe(imagemin())
+        .pipe(gulp.dest('dist/img/'))
 });
