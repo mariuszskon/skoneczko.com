@@ -43,3 +43,5 @@ gulp.task('images', function() {
         .pipe(imagemin())
         .pipe(gulp.dest('dist/img/'));
 });
+
+gulp.task('build', ['sass', 'html', 'blog', 'images']);
