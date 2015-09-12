@@ -6,6 +6,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var debug = require('gulp-debug');
 var changed = require('gulp-changed');
 var imagemin = require('gulp-imagemin');
+var minifyHTML = require('gulp-minify-html');
 
 gulp.task('sass', function() {
     gulp.src('src/src/base.scss')
@@ -23,6 +24,7 @@ gulp.task('html', function() {
     gulp.src(['src/**/*.html', '!**/*~']) // don't copy backup files
         .pipe(changed('dist/'))
         .pipe(debug({title: 'gulp-debug [html]'}))
+        .pipe(minifyHTML({conditionals: true}))
         .pipe(gulp.dest('dist/'));
 });
 
