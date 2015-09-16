@@ -150,22 +150,26 @@ a:hover {
 @-webkit-keyframes fadeinleft {
   0% {
     opacity: 0;
-    margin-left: -100%;
+    -webkit-transform: translate3d(-50%, 0, 0);
+            transform: translate3d(-50%, 0, 0);
   }
   100% {
     opacity: 1;
-    margin-left: 0;
+    -webkit-transform: none;
+            transform: none;
   }
 }
 
 @keyframes fadeinleft {
   0% {
     opacity: 0;
-    margin-left: -100%;
+    -webkit-transform: translate3d(-50%, 0, 0);
+            transform: translate3d(-50%, 0, 0);
   }
   100% {
     opacity: 1;
-    margin-left: 0;
+    -webkit-transform: none;
+            transform: none;
   }
 }
 
