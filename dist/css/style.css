@@ -17,15 +17,7 @@ header h1 {
 }
 
 .header-container {
-  width: 95%;
-  margin: 0 auto;
   position: relative;
-}
-
-@media screen and (min-width: 920px) {
-  .header-container {
-    width: 80%;
-  }
 }
 
 nav {
@@ -46,17 +38,15 @@ nav ul li {
 }
 
 nav ul li a {
-  text-decoration: none;
   color: #333;
   display: inline-block;
   padding: 0 1em;
   transition: background-color 0.5s, color 0.5s;
 }
 
-nav ul li a:hover {
+nav ul li a:hover, nav ul li a:focus, nav ul li a:active {
   color: blue;
   background-color: gainsboro;
-  text-decoration: none;
 }
 
 nav .desktop-ul {
@@ -87,9 +77,9 @@ nav .desktop-ul {
 }
 
 .mobile-nav ul li {
-  float: none;
+  float: left;
   display: inline-block;
-  width: 23%;
+  width: 25%;
 }
 
 .mobile-nav ul li a {
@@ -108,13 +98,13 @@ nav .desktop-ul {
   }
 }
 
-.main-container {
+.main-container, .header-container {
   width: 95%;
   margin: 0 auto;
 }
 
 @media screen and (min-width: 920px) {
-  .main-container {
+  .main-container, .header-container {
     width: 80%;
   }
 }

@@ -24,7 +24,7 @@ header {
 }
 
 .header-container {
-    @include nice-contain;
+    @extend .main-container; // .main-container defined below
     position: relative;
 }
 
@@ -43,16 +43,14 @@ nav {
             background-color: $main-toolbar-color;
             
             a {
-                text-decoration: none;
                 color: $main-font-color;
                 display: inline-block;
                 padding: 0 1em;
                 transition: background-color 0.5s, color 0.5s;
                 
-                &:hover {
+                &:hover, &:focus, &:active {
                     color: $navbar-hover-text-color;
                     background-color: darken($main-toolbar-color, 10%);
-                    text-decoration: none;
                 }
                 
             }
@@ -80,9 +78,9 @@ nav {
         margin: 0 auto;
         
         li {
-            float: none;
+            float: left;
             display: inline-block;
-            width: 23%;
+            width: 25%;
             
             a {
                 width: 100%;
@@ -102,7 +100,12 @@ nav {
 }
 
 .main-container {
-    @include nice-contain;
+    width: 95%;
+    margin: 0 auto;
+    
+    @media screen and (min-width: $mobile-px) {
+        width: 80%;
+    }
 }
 
 img.left {
@@ -145,7 +148,7 @@ a {
     }
 }
 
-.skills  {
+.skills {
     @include animation(fadeinleft, 1s, 1s);
 }
 
