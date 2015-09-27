@@ -46,6 +46,8 @@
                     <p class="warn">You are using Internet Explorer lower than 9.<br />Please <a href="http://browsehappy.com/">upgrade your browser</a> to make the most of the web.</p>
                 <![endif]-->
                 <h2>Latest posts</h2>
+                <h3><a href="2015/09/27/do-you-need-jq.php">Do You Need jQuery?</a></h3>
+                <div class="date-posted">Posted on 27th September 2015</div><br>
                 <h3><a href="2015/08/31/gitstarted.php">Git Started</a></h3>
                 <div class="date-posted">Posted on 31st August 2015</div><br>
                 <h3><a href="2015/08/19/sass.php">Sass is awesome</a></h3>
