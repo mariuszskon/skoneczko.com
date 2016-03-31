@@ -227,6 +227,10 @@ a:hover {
           animation-delay: 1s;
 }
 
+.skills {
+  list-style: none;
+}
+
 code {
   background-color: #333;
   color: white;
