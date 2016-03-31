@@ -7,6 +7,8 @@ var debug = require('gulp-debug');
 var changed = require('gulp-changed');
 var imagemin = require('gulp-imagemin');
 var minifyHTML = require('gulp-minify-html');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
 
 gulp.task('sass', function() {
     gulp.src('src/css/base.scss')
@@ -44,6 +46,14 @@ gulp.task('images', function() {
         .pipe(gulp.dest('dist/img/'));
 });
 
+gulp.task('js', function() {
+    gulp.src('src/js/*.js')
+        .pipe(debug({title: 'gulp-debug [js]'}))
+        .pipe(concat('all.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('dist/js/'));
+});
+
 // copy everything else that we may expect in the final build
 gulp.task('misc', function() {
     gulp.src('src/favicon.ico')
@@ -58,4 +68,4 @@ gulp.task('misc', function() {
         .pipe(gulp.dest('dist/portfolio/'));
 });
 
-gulp.task('build', ['sass', 'html', 'blog', 'images', 'misc']);
+gulp.task('build', ['sass', 'html', 'blog', 'images', 'js', 'misc']);
