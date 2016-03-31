@@ -1,4 +1,47 @@
 /* skoneczko.com stylesheet */
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeindown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -50%, 0);
+            transform: translate3d(0, -50%, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@keyframes fadeindown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -50%, 0);
+            transform: translate3d(0, -50%, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -8,6 +51,14 @@ body {
 }
 
 header {
+  -webkit-animation-name: fadeindown;
+          animation-name: fadeindown;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
   background-color: whitesmoke;
 }
 
@@ -110,6 +161,21 @@ nav .desktop-ul {
   }
 }
 
+.fancy-container {
+  font-size: 2em;
+  line-height: 1.5em;
+  text-align: center;
+}
+
+.fancy-container ul {
+  padding: 0;
+}
+
+.fancy-container h2 {
+  line-height: 2em;
+  padding: 2em 0;
+}
+
 img.left {
   float: left;
   padding-right: 1.5em;
@@ -138,35 +204,9 @@ a:hover {
   padding: 2px;
 }
 
-@-webkit-keyframes fadeinleft {
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(-50%, 0, 0);
-            transform: translate3d(-50%, 0, 0);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: none;
-            transform: none;
-  }
-}
-
-@keyframes fadeinleft {
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(-50%, 0, 0);
-            transform: translate3d(-50%, 0, 0);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: none;
-            transform: none;
-  }
-}
-
-.skills {
-  -webkit-animation-name: fadeinleft;
-          animation-name: fadeinleft;
+.welcome-msg {
+  -webkit-animation-name: fadein;
+          animation-name: fadein;
   -webkit-animation-duration: 1s;
           animation-duration: 1s;
   -webkit-animation-fill-mode: both;

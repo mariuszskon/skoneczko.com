@@ -4,6 +4,8 @@
 
 @import "mixins";
 
+@import "animations";
+
 // style
 
 body {
@@ -15,6 +17,7 @@ body {
 }
 
 header {
+    @include animation(fadeindown, 1s, 0s);
     background-color: $main-toolbar-color;
     
     h1 {
@@ -109,6 +112,21 @@ nav {
     }
 }
 
+.fancy-container {
+    font-size: 2em;
+    line-height: 1.5em; // ensure that the larger text does not overlap
+    text-align: center;
+
+    ul {
+        padding: 0;
+    }
+
+    h2 {
+        line-height: 2em;
+        padding: 2em 0;
+    }
+}
+
 img.left {
     float: left;
     padding-right: 1.5em;
@@ -137,20 +155,8 @@ a {
     padding: 2px;
 }
 
-@keyframes fadeinleft {
-    0% {
-        opacity: 0;
-        transform: translate3d(-50%, 0, 0);
-    }
-    
-    100% {
-        opacity: 1;
-        transform: none;
-    }
-}
-
-.skills {
-    @include animation(fadeinleft, 1s, 1s);
+.welcome-msg {
+    @include animation(fadein, 1s, 1s);
 }
 
 code {
