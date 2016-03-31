@@ -9,7 +9,7 @@ var imagemin = require('gulp-imagemin');
 var minifyHTML = require('gulp-minify-html');
 
 gulp.task('sass', function() {
-    gulp.src('src/src/base.scss')
+    gulp.src('src/css/base.scss')
         .pipe(debug({title: 'gulp-debug [sass]:'}))
         .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
         .pipe(autoprefixer({browsers: ['last 3 version']}))
