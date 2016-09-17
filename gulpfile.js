@@ -9,7 +9,6 @@ var imagemin = require('gulp-imagemin');
 var minifyHTML = require('gulp-minify-html');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
-var highlight = require('gulp-highlight');
 
 gulp.task('sass', function() {
     gulp.src('src/css/base.scss')
@@ -27,7 +26,6 @@ gulp.task('html', function() {
     gulp.src(['src/**/*.html', '!**/*~']) // don't copy backup files
         .pipe(changed('dist/'))
         .pipe(debug({title: 'gulp-debug [html]:'}))
-        .pipe(highlight())
         .pipe(minifyHTML({conditionals: true}))
         .pipe(gulp.dest('dist/'));
 });
@@ -53,6 +51,12 @@ gulp.task('js', function() {
         .pipe(debug({title: 'gulp-debug [js]'}))
         .pipe(concat('all.js'))
         .pipe(uglify())
+        .pipe(gulp.dest('dist/js/'));
+
+    gulp.src('src/js/vendor/**/*.js')
+        .pipe(debug({title: 'gulp-debug [vendor js]'}))
+        .pipe(concat('vendor.js'))
+        // already uglified
         .pipe(gulp.dest('dist/js/'));
 });
 

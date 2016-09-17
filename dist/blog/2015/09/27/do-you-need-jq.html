@@ -1,43 +1,43 @@
 <!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width, initial-scale=1"><title>Do You Need jQuery?</title><link href=/css/style.min.css rel=stylesheet></head><body><header><div class=header-container><h1>Do You Need jQuery?</h1><nav><ul class=desktop-ul><li><a href=/index.html>Home</a></li><li><a href=/portfolio/index.html>Portfolio</a></li><li class=current><a href=/blog/index.html>Blog</a></li><li><a href=/contact.html>Contact</a></li></ul></nav><nav class=mobile-nav><ul><li><a href=/index.html>Home</a></li><li><a href=/portfolio/index.html>Portfolio</a></li><li class=current><a href=/blog/index.html>Blog</a></li><li><a href=/contact.html>Contact</a></li></ul></nav></div></header><div id=main-body><div class=main-container><!--[if lt IE 9]>
  <p class="warn">You are using Internet Explorer lower than 9.<br>Please <a href="http://browsehappy.com/">upgrade your browser</a> to make the most of the web.</p>
- <![endif]--><p class=date-posted>Posted on 27th September 2015</p><article><p>jQuery. The JavaScript library that has improved the lives of web developers around the world. But it is also the library which makes new web developers scared of <a href="http://vanilla-js.com/">vanilla JS</a>. Back when IE6 still needed to be supported, jQuery truly shined. It allowed the use of fancy CSS selectors, using Ajax in a cross-browser way, having nice animations, and in general giving a layer that saved time because we didn't need to write tons of if statements and weird hacks. However, those days are over.</p><p>Modern browsers can do all of the things that jQuery does, and more. After all, jQuery is simply a JavaScript library. The problem which arises these days is that some developers don't know how to do things that jQuery does with plain JavaScript! So I got a list of things which everyone should know how to do <strong>without</strong> jQuery. In this blog post, I use some code from <a href="http://youmightnotneedjquery.com/">You Might Not Need jQuery</a>.</p><h2>Selecting elements with CSS3 Selectors</h2><p>If you want to get an element by it's ID, instead of <code><span class=hljs-variable>$(</span><span class=hljs-string>"#id"</span>)</code> just use <code><span class=hljs-built_in>document</span>.getElementById(<span class=hljs-string>"id"</span>)</code>. If you want to use more advanced selector, for example if you want to select the last <code><span class=hljs-attribute>li</span></code> element inside a <code><span class=hljs-attribute>ul</span></code> with the id <code><span class=hljs-attribute>mylist</span></code>, you would use <code><span class=hljs-selector-tag>document</span><span class=hljs-selector-class>.querySelector</span>("<span class=hljs-selector-tag>ul</span><span class=hljs-selector-id>#mylist</span> &gt; <span class=hljs-selector-tag>li</span><span class=hljs-selector-pseudo>:last-child")</span></code>. You can obviously make a shorthand, like so:</p><pre><code><span class=hljs-keyword>function</span> <span class=hljs-title>getEl</span>(query) {
-    <span class=hljs-keyword>return</span> <span class=hljs-type>document.querySelector(query)</span>;
+ <![endif]--><p class=date-posted>Posted on 27th September 2015</p><article><p>jQuery. The JavaScript library that has improved the lives of web developers around the world. But it is also the library which makes new web developers scared of <a href="http://vanilla-js.com/">vanilla JS</a>. Back when IE6 still needed to be supported, jQuery truly shined. It allowed the use of fancy CSS selectors, using Ajax in a cross-browser way, having nice animations, and in general giving a layer that saved time because we didn't need to write tons of if statements and weird hacks. However, those days are over.</p><p>Modern browsers can do all of the things that jQuery does, and more. After all, jQuery is simply a JavaScript library. The problem which arises these days is that some developers don't know how to do things that jQuery does with plain JavaScript! So I got a list of things which everyone should know how to do <strong>without</strong> jQuery. In this blog post, I use some code from <a href="http://youmightnotneedjquery.com/">You Might Not Need jQuery</a>.</p><h2>Selecting elements with CSS3 Selectors</h2><p>If you want to get an element by it's ID, instead of <code>$("#id")</code> just use <code>document.getElementById("id")</code>. If you want to use more advanced selector, for example if you want to select the last <code>li</code> element inside a <code>ul</code> with the id <code>mylist</code>, you would use <code>document.querySelector("ul#mylist > li:last-child")</code>. You can obviously make a shorthand, like so:</p><pre><code>function getEl(query) {
+    return document.querySelector(query);
 }
-</code></pre><h2>AJAX</h2><p>I must admit, for someone coming from a jQuery background, vanilla AJAX does look quite scary. It also makes you think about the type of request you need. If you need to do a GET request:</p><pre><code><span class=hljs-keyword>var</span> request = <span class=hljs-keyword>new</span> XMLHttpRequest();
-request.open(<span class=hljs-string>'GET'</span>, <span class=hljs-string>'/my/url'</span>, <span class=hljs-literal>true</span>);
+</code></pre><h2>AJAX</h2><p>I must admit, for someone coming from a jQuery background, vanilla AJAX does look quite scary. It also makes you think about the type of request you need. If you need to do a GET request:</p><pre><code>var request = new XMLHttpRequest();
+request.open('GET', '/my/url', true);
 
-request.onload = <span class=hljs-function><span class=hljs-keyword>function</span><span class=hljs-params>()</span> </span>{
-  <span class=hljs-keyword>if</span> (request.status &gt;= <span class=hljs-number>200</span> &amp;&amp; request.status &lt; <span class=hljs-number>400</span>) {
-    <span class=hljs-comment>// Success!</span>
-    <span class=hljs-keyword>var</span> resp = request.responseText;
-  } <span class=hljs-keyword>else</span> {
-    <span class=hljs-comment>// We reached our target server, but it returned an error</span>
+request.onload = function() {
+  if (request.status >= 200 && request.status < 400) {
+    // Success!
+    var resp = request.responseText;
+  } else {
+    // We reached our target server, but it returned an error
 
   }
 };
 
-request.onerror = <span class=hljs-function><span class=hljs-keyword>function</span><span class=hljs-params>()</span> </span>{
-  <span class=hljs-comment>// There was a connection error of some sort</span>
+request.onerror = function() {
+  // There was a connection error of some sort
 };
 
 request.send();
-</code></pre><p>A POST request is a bit different:</p><pre><code><span class=hljs-keyword>var</span> request = <span class=hljs-keyword>new</span> XMLHttpRequest();
-request.open(<span class=hljs-string>'POST'</span>, <span class=hljs-string>'/my/url'</span>, <span class=hljs-literal>true</span>);
-request.setRequestHeader(<span class=hljs-string>'Content-Type'</span>, <span class=hljs-string>'application/x-www-form-urlencoded; charset=UTF-8'</span>);
+</code></pre><p>A POST request is a bit different:</p><pre><code>var request = new XMLHttpRequest();
+request.open('POST', '/my/url', true);
+request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
 
-<span class=hljs-comment>// if you want to get the responseText, include the onload and onerror functions, otherwise you can simply leave them out!</span>
-request.onload = <span class=hljs-function><span class=hljs-keyword>function</span><span class=hljs-params>()</span> </span>{
-  <span class=hljs-keyword>if</span> (request.status &gt;= <span class=hljs-number>200</span> &amp;&amp; request.status &lt; <span class=hljs-number>400</span>) {
-    <span class=hljs-comment>// Success!</span>
-    <span class=hljs-keyword>var</span> resp = request.responseText;
-  } <span class=hljs-keyword>else</span> {
-    <span class=hljs-comment>// We reached our target server, but it returned an error</span>
+// if you want to get the responseText, include the onload and onerror functions, otherwise you can simply leave them out!
+request.onload = function() {
+  if (request.status >= 200 && request.status < 400) {
+    // Success!
+    var resp = request.responseText;
+  } else {
+    // We reached our target server, but it returned an error
 
   }
 };
 
-request.onerror = <span class=hljs-function><span class=hljs-keyword>function</span><span class=hljs-params>()</span> </span>{
-  <span class=hljs-comment>// There was a connection error of some sort</span>
+request.onerror = function() {
+  // There was a connection error of some sort
 };
 
 request.send(data);
