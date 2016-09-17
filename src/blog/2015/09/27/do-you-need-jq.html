@@ -51,13 +51,13 @@
 <p>Modern browsers can do all of the things that jQuery does, and more. After all, jQuery is simply a JavaScript library. The problem which arises these days is that some developers don't know how to do things that jQuery does with plain JavaScript! So I got a list of things which everyone should know how to do <strong>without</strong> jQuery. In this blog post, I use some code from <a href="http://youmightnotneedjquery.com/">You Might Not Need jQuery</a>.</p>
 <h2>Selecting elements with CSS3 Selectors</h2>
 <p>If you want to get an element by it's ID, instead of <code>$("#id")</code> just use <code>document.getElementById("id")</code>. If you want to use more advanced selector, for example if you want to select the last <code>li</code> element inside a <code>ul</code> with the id <code>mylist</code>, you would use <code>document.querySelector("ul#mylist > li:last-child")</code>. You can obviously make a shorthand, like so:</p>
-<pre><code>function getEl(query) {
+<pre><code class="lang-js">function getEl(query) {
     return document.querySelector(query);
 }
 </code></pre>
 <h2>AJAX</h2>
 <p>I must admit, for someone coming from a jQuery background, vanilla AJAX does look quite scary. It also makes you think about the type of request you need. If you need to do a GET request:</p>
-<pre><code>var request = new XMLHttpRequest();
+<pre><code class="lang-js">var request = new XMLHttpRequest();
 request.open('GET', '/my/url', true);
 
 request.onload = function() {
@@ -77,7 +77,7 @@ request.onerror = function() {
 request.send();
 </code></pre>
 <p>A POST request is a bit different:</p>
-<pre><code>var request = new XMLHttpRequest();
+<pre><code class="lang-js">var request = new XMLHttpRequest();
 request.open('POST', '/my/url', true);
 request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
 
@@ -103,9 +103,10 @@ request.send(data);
 <h2>Conclusion</h2>
 <p>jQuery is an amazing library that makes cross-browser JavaScript a pleasure. However, modern browsers are no longer as problematic, and web developers need to learn to use vanilla JS. For a nice list of how to do things in vanilla JS, I recommend <a href="http://youmightnotneedjquery.com/">You Might Not Need jQuery</a>. It really is a whole new world. </p>
                 </article>
-                <div>
             </div>
         </div>
+        <script src="/js/vendor.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
     
     </body>
 </html>
