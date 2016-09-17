@@ -30,6 +30,14 @@ gulp.task('html', function() {
         .pipe(gulp.dest('dist/'));
 });
 
+// blog task separate, in case changes are to be made later
+gulp.task('blog', function() {
+    gulp.src('src/blog/**/*.php')
+        .pipe(changed('dist/blog/'))
+        .pipe(debug({title: 'gulp-debug [blog]:'}))
+        .pipe(gulp.dest('dist/blog/'));
+});
+
 gulp.task('images', function() {
     gulp.src('src/img/**/*')
         .pipe(changed('dist/img/'))
@@ -60,4 +68,4 @@ gulp.task('misc', function() {
         .pipe(gulp.dest('dist/portfolio/'));
 });
 
-gulp.task('build', ['sass', 'html', 'images', 'js', 'misc']);
+gulp.task('build', ['sass', 'html', 'blog', 'images', 'js', 'misc']);
