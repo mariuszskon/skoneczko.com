@@ -7,7 +7,7 @@
 request.open(<span class=hljs-string>'GET'</span>, <span class=hljs-string>'/my/url'</span>, <span class=hljs-literal>true</span>);
 
 request.onload = <span class=hljs-function><span class=hljs-keyword>function</span><span class=hljs-params>()</span> </span>{
-  <span class=hljs-keyword>if</span> (request.status &amp;gt;= <span class=hljs-number>200</span> &amp;&amp; request.status &amp;lt; <span class=hljs-number>400</span>) {
+  <span class=hljs-keyword>if</span> (request.status &gt;= <span class=hljs-number>200</span> &amp;&amp; request.status &lt; <span class=hljs-number>400</span>) {
     <span class=hljs-comment>// Success!</span>
     <span class=hljs-keyword>var</span> resp = request.responseText;
   } <span class=hljs-keyword>else</span> {
@@ -27,7 +27,7 @@ request.setRequestHeader(<span class=hljs-string>'Content-Type'</span>, <span cl
 
 <span class=hljs-comment>// if you want to get the responseText, include the onload and onerror functions, otherwise you can simply leave them out!</span>
 request.onload = <span class=hljs-function><span class=hljs-keyword>function</span><span class=hljs-params>()</span> </span>{
-  <span class=hljs-keyword>if</span> (request.status &amp;gt;= <span class=hljs-number>200</span> &amp;&amp; request.status &amp;lt; <span class=hljs-number>400</span>) {
+  <span class=hljs-keyword>if</span> (request.status &gt;= <span class=hljs-number>200</span> &amp;&amp; request.status &lt; <span class=hljs-number>400</span>) {
     <span class=hljs-comment>// Success!</span>
     <span class=hljs-keyword>var</span> resp = request.responseText;
   } <span class=hljs-keyword>else</span> {
