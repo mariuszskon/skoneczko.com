@@ -60,10 +60,10 @@
     </ul><p>That's cool. I can easily live with that. I can't make shiny CSS animations for everyone, but at least I can use good selectors, make the browser show it's screen size's layout, have nice SVG images, use great HTML5 semantic elements and take advantage of useful JavaScript features.</p>
 <p>If you want to compare the features of different IE versions, you can't go wrong with <a href="http://caniuse.com/#compare=ie+7,ie+8,ie+9,ie+10,ie+11">caniuse.com</a>.<br>
     Luckily, you can easily add a warning message to users of browsers you don't like. Simply add a special IE conditional comment: </p>
-    <pre>&lt;!--[if lt IE 9]&gt;
-    &lt;p class="warn"&gt;You are using Internet Explorer lower than 9.&lt;br /&gt;Please &lt;a href="http://browsehappy.com/"&gt;upgrade your browser&lt;/a&gt; to make the most of the web.&lt;/p&gt;
-&lt;![endif]--&gt;
-    </pre><p>These conditional comments are simply comments in modern browsers, but IE can interpret them, and if the conditions are met (IE is lower than 9) show the contents. However, you are not limited to simply showing content. You can make old versions of IE load things like <a href="https://github.com/aFarkas/html5shiv">html5shiv</a> to make older browsers more manageable.<br><br>
+    <pre><code><!--[if lt IE 9]>
+    <p class="warn">You are using Internet Explorer lower than 9.<br />Please <a href="http://browsehappy.com/">upgrade your browser</a> to make the most of the web.</p>
+<![endif]--></code></pre>
+    <p>These conditional comments are simply comments in modern browsers, but IE can interpret them, and if the conditions are met (IE is lower than 9) show the contents. However, you are not limited to simply showing content. You can make old versions of IE load things like <a href="https://github.com/aFarkas/html5shiv">html5shiv</a> to make older browsers more manageable.<br><br>
 I hope I taught you something ;)
 
 </p>
