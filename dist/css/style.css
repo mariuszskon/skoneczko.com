@@ -164,6 +164,11 @@ header h1 {
   position: relative;
 }
 
+.header-container h1 {
+  position: relative;
+  z-index: 999999;
+}
+
 nav {
   height: 3em;
   position: relative;

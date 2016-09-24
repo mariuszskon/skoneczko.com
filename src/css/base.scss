@@ -34,6 +34,11 @@ header {
 .header-container {
     @extend .main-container; // .main-container defined below
     position: relative;
+
+    h1 {
+        position: relative;
+        z-index: 999999; // so header is copy-pastable
+    }
 }
 
 nav {
