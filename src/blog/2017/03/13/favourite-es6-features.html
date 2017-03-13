@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>My Favourite ES6 Features</title>
+        
+        <link href="/css/style.min.css" rel="stylesheet">
+        
+    </head>
+  
+    <body>
+        
+        <header>
+            <div class="header-container">
+                
+                <h1>My Favourite ES6 Features</h1>
+                <nav>
+                    <ul class="desktop-ul">
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/portfolio/index.html">Portfolio</a></li>
+                        <li class="current"><a href="/blog/index.html">Blog</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <nav class="mobile-nav">
+                    <ul>
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/portfolio/index.html">Portfolio</a></li>
+                        <li class="current"><a href="/blog/index.html">Blog</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        
+
+    
+        <div id="main-body">
+            
+            <div class="main-container">
+                <!--[if lt IE 9]>
+                    <p class="warn">You are using Internet Explorer lower than 9.<br>Please <a href="http://browsehappy.com/">upgrade your browser</a> to make the most of the web.</p>
+                <![endif]-->
+                <p class="date-posted">Posted on 13th March 2017</p>
+                <article>
+                    <p><a href="https://en.wikipedia.org/wiki/ECMAScript#6th_Edition_-_ECMAScript_2015">ECMAScript 6</a> (ES6 for short) is ancient now by internet standards, but that is all the more reason to use it. Why? Because <a href="https://kangax.github.io/compat-table/es6/">many browsers (and of course, Nodejs) now natively support it</a>. For those who are unfamiliar with ES6, it's an extension to the JavaScript standard that provides many useful features that make it all the more pleasant to use. Of course, not enough older browsers support many of its features, so you will still need to use a transpiler such as <a href="http://babeljs.io/">Babel</a> if you plan on writing ES6 in production. But is ES6 worth the hassle? It sure is. Here are my favourite features.</p>
+                    <h2>let and const</h2>
+                    <p>Javascript's <code>var</code> leaves much to be desired. While <code>const</code> and <code>let</code> are not the most glamorous features, they serve a very useful purpose. Let's begin with <code>let</code>.</p>
+                    <pre><code class="lang-js">if (2 > 1) {
+    var x = 42;
+}
+
+console.log(x); // 42</code></pre>
+                    <p>JavaScript is a bit different from many programming languages in that variables are function scoped (that is, they are accessible throughout a function, but not outside of it, unless if they are global). Many other languages, such as the C family, use block scoped variables - blocks such as if, while, for etc. isolate local variables. <code>let</code> brings this familiar scoping to JavaScript.</p>
+                    <pre><code class="lang-js">if (2 > 1) {
+    let x = 42;
+}
+
+console.log(x); // ReferenceError: x is not defined</code></pre>
+                    <p><code>const</code> functions very similarily to <code>let</code> in that it is block scoped, but it also brings some, well, stability to variables. Variables declared by a <code>const</code> cannot be changed later. However, there is an important distinction: while the <strong>variable</strong> itself is a constant (immutable), but the <strong>value</strong> might still be possible to be changed. If you use const for types such as integers, you will generally be fine, but a <code>const</code> object can still have its values changed.</p>
+                    <h2>Arrow functions</h2>
+                    <p>Due to JavaScript's nature of using callbacks, you will eventually end up writing code that (ab)uses anonymous functions. Take this for example:</p>
+                    <pre><code class="lang-js">const my_array = [2, 3, 4];
+const result = my_array.map(function (x) {
+    return x * 3;
+});</code></pre>
+                    <p>Not very pleasant, huh? The problem becomes far worse when you have multiple callbacks and many arguments.</p>
+                    <pre><code class="lang-js">const my_array = [2, 3, 4];
+const result = my_array.map(x => x * 3);</code></pre>
+                    <p>Simple callbacks can be made far less verbose. If you use a simple expression, it is returned automatically so you do not even need a <code>return</code>. If you have one parameter, you can omit the parentheses (zero argument arrow functions still require parentheses - one argument is the special case). For more complicated code, you'll want to wrap the anonymous function with a braces that make it a block.</p>
+                    <pre><code class="lang-js">const my_array = [2, 3, 4];
+const result = my_array.map((x) => {
+    let final_result = x;
+    final_result *= 3;
+    final_result += 2;
+    return final_result;
+});</code></pre>
+                    <p>The arrow functions also provide lexical scoping of <code>this</code> which you can read about <a href="http://exploringjs.com/es6/ch_arrow-functions.html#sec_traditional-functions-bad-non-methods">here</a>.</p>
+                    <h2>Class syntax sugar</h2>
+                    <p>This is one of the most controversial ES6 features because it could mislead some programmers into misunderstanding how JavaScript works. I, however, welcome the change, as it makes classes look like classes rather than funky functions. In "classical" (ES5 etc.) JavaScript, to make a "class" you would do something like:</p>
+                    <pre><code class="lang-js">function Employee(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+Employee.prototype.introduce = function() {
+    return "Hello! My name is " + this.name + " and I am " + this.age + ".";
+}
+
+first_employee = new Employee("John Smith", 42);
+console.log(first_employee.introduce());</code></pre>
+                    <p>A function that becomes a class when you use <code>new</code> is a bit strange in my opinion. The <code>prototype</code> is not much better. Luckily, ES6 introduces nicer-looking syntax that does the same thing in the background:</p>
+                    <pre><code class="lang-js">class Employee {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    introduce() {
+        return "Hello! My name is " + this.name + " and I am " + this.age + ".";
+    }
+}
+
+first_employee = new Employee("John Smith", 42);
+console.log(first_employee.introduce());</code></pre>
+                    <p>Truly a breath of fresh air. If you need to declare methods outside of the class, you can, using the old <code>prototype</code> syntax too - the <code>class</code> syntax is just syntactic sugar! But that string looks pretty ugly, but luckily, ES6 has the solution!</p>
+                    <h2>Template literals</h2>
+                    <p>Let's return to our <code>introduce</code> method:</p>
+                    <pre><code class="lang-js">Employee.prototype.introduce = function() {
+    return "Hello! My name is " + this.name + " and I am " + this.age + ".";
+}</code></pre>
+                    <p>Doing tasks like this is very common in JavaScript as you usually want to display some variables in the DOM eventually. ES6 makes variable interpolation in strings muhc more human-friendly:</p>
+                    <pre><code class="lang-js">Employee.prototype.introduce = function() {
+    return `Hello! My name is ${this.name} and I am ${this.age}.`;
+}</code></pre>
+                    <p>The backticks also allow you to write text spanning multiple lines with nothing more than newlines. Simple, but very certainly useful.</p>
+                    <h2>Default parameter values</h2>
+                    <p>While many languages enjoyed such a feature for years, in JavaScript programmers were forced to endure something like this if they wanted default values for function parameters:</p>
+                    <pre><code class="lang-js">function compute(x, y, z) {
+    if (y === undefined) {
+        y = 3;
+    }
+    if (z === undefined) {
+        z = 10;
+    }
+    return (x + y) * z;
+}</code></pre>
+                    <p>ES6 removes the need for such annoying "header" code:</p>
+                    <pre><code class="lang-js">function compute(x, y = 3, z = 10) {
+    return (x + y) * z;
+}</code></pre>
+                    <p>Surely everyone agrees that this is a superior solution.</p>
+                    <h2>Conclusion</h2>
+                    <p>What I covered here barely scratches the surface, but it should give a nice taste to those who are still unaware of ES6's features. For further reading, I recommend the far more indepth <a href="http://exploringjs.com/es6/">Exploring ES6</a> book which the author made available for free on the website.</p>
+                </article>
+            </div>
+        </div>
+        <script src="/js/vendor.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+    </body>
+</html>
