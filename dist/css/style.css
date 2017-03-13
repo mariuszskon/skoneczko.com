@@ -1,12 +1,4 @@
 /* skoneczko.com stylesheet */
-@-webkit-keyframes fadein {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 @keyframes fadein {
   from {
     opacity: 0;
@@ -16,29 +8,14 @@
   }
 }
 
-@-webkit-keyframes fadeindown {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -50%, 0);
-            transform: translate3d(0, -50%, 0);
-  }
-  to {
-    opacity: 1;
-    -webkit-transform: none;
-            transform: none;
-  }
-}
-
 @keyframes fadeindown {
   from {
     opacity: 0;
-    -webkit-transform: translate3d(0, -50%, 0);
-            transform: translate3d(0, -50%, 0);
+    transform: translate3d(0, -50%, 0);
   }
   to {
     opacity: 1;
-    -webkit-transform: none;
-            transform: none;
+    transform: none;
   }
 }
 
@@ -123,14 +100,11 @@ from https://github.com/isagalaev/highlight.js/blob/master/src/styles/zenburn.cs
 }
 
 .anim-skill-item {
-  transition: opacity 1s, -webkit-transform 1s;
   transition: transform 1s, opacity 1s;
-  transition: transform 1s, opacity 1s, -webkit-transform 1s;
 }
 
 .anim-skill-left {
-  -webkit-transform: translate3d(-70%, 0, 0);
-          transform: translate3d(-70%, 0, 0);
+  transform: translate3d(-70%, 0, 0);
   opacity: 0;
 }
 
@@ -143,14 +117,10 @@ body {
 }
 
 header {
-  -webkit-animation-name: fadeindown;
-          animation-name: fadeindown;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-          animation-fill-mode: both;
-  -webkit-animation-delay: 0s;
-          animation-delay: 0s;
+  animation-name: fadeindown;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-delay: 0s;
   background-color: whitesmoke;
 }
 
@@ -302,14 +272,10 @@ a:hover {
 }
 
 .welcome-msg {
-  -webkit-animation-name: fadein;
-          animation-name: fadein;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-          animation-fill-mode: both;
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  animation-name: fadein;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-delay: 1s;
 }
 
 .skills {
