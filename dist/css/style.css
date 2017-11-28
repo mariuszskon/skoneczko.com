@@ -1,4 +1,12 @@
 /* skoneczko.com stylesheet */
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 @keyframes fadein {
   from {
     opacity: 0;
@@ -8,14 +16,29 @@
   }
 }
 
-@keyframes fadeindown {
+@-webkit-keyframes fadeindown {
   from {
     opacity: 0;
-    transform: translate3d(0, -50%, 0);
+    -webkit-transform: translate3d(0, -50%, 0);
+            transform: translate3d(0, -50%, 0);
   }
   to {
     opacity: 1;
-    transform: none;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@keyframes fadeindown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -50%, 0);
+            transform: translate3d(0, -50%, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
   }
 }
 
@@ -100,11 +123,16 @@ from https://github.com/isagalaev/highlight.js/blob/master/src/styles/zenburn.cs
 }
 
 .anim-skill-item {
+  -webkit-transition: opacity 1s, -webkit-transform 1s;
+  transition: opacity 1s, -webkit-transform 1s;
+  -o-transition: transform 1s, opacity 1s;
   transition: transform 1s, opacity 1s;
+  transition: transform 1s, opacity 1s, -webkit-transform 1s;
 }
 
 .anim-skill-left {
-  transform: translate3d(-70%, 0, 0);
+  -webkit-transform: translate3d(-70%, 0, 0);
+          transform: translate3d(-70%, 0, 0);
   opacity: 0;
 }
 
@@ -117,10 +145,14 @@ body {
 }
 
 header {
-  animation-name: fadeindown;
-  animation-duration: 1s;
-  animation-fill-mode: both;
-  animation-delay: 0s;
+  -webkit-animation-name: fadeindown;
+          animation-name: fadeindown;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
   background-color: whitesmoke;
 }
 
@@ -160,6 +192,8 @@ nav ul li a {
   color: #333;
   display: inline-block;
   padding: 0 1em;
+  -webkit-transition: background-color 0.5s, color 0.5s;
+  -o-transition: background-color 0.5s, color 0.5s;
   transition: background-color 0.5s, color 0.5s;
 }
 
@@ -259,6 +293,8 @@ img.left {
 a {
   color: blue;
   text-decoration: none;
+  -webkit-transition: color, 0.5s;
+  -o-transition: color, 0.5s;
   transition: color, 0.5s;
 }
 
@@ -272,10 +308,14 @@ a:hover {
 }
 
 .welcome-msg {
-  animation-name: fadein;
-  animation-duration: 1s;
-  animation-fill-mode: both;
-  animation-delay: 1s;
+  -webkit-animation-name: fadein;
+          animation-name: fadein;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
 }
 
 .skills {
