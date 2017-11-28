@@ -173,7 +173,13 @@ header h1 {
 
 nav {
   height: 3em;
-  position: relative;
+  clear: both;
+}
+
+@media screen and (min-width: 920px) {
+  nav {
+    clear: none;
+  }
 }
 
 nav ul {
@@ -181,11 +187,18 @@ nav ul {
   padding: 0;
   list-style: none;
   line-height: 3em;
+  text-align: center;
 }
 
 nav ul li {
-  float: right;
   background-color: whitesmoke;
+  display: inline-block;
+}
+
+@media screen and (min-width: 920px) {
+  nav ul li {
+    float: right;
+  }
 }
 
 nav ul li a {
@@ -200,45 +213,6 @@ nav ul li a {
 nav ul li a:hover, nav ul li a:focus, nav ul li a:active {
   color: blue;
   background-color: gainsboro;
-}
-
-nav .desktop-ul {
-  display: none;
-  position: absolute;
-  right: 0;
-}
-
-@media screen and (min-width: 920px) {
-  nav .desktop-ul {
-    display: block;
-    top: 0;
-  }
-}
-
-.mobile-nav {
-  display: block;
-}
-
-@media screen and (min-width: 920px) {
-  .mobile-nav {
-    display: none;
-  }
-}
-
-.mobile-nav ul {
-  margin: 0 auto;
-}
-
-.mobile-nav ul li {
-  float: left;
-  display: inline-block;
-  width: 25%;
-}
-
-.mobile-nav ul li a {
-  width: 100%;
-  padding: 0;
-  text-align: center;
 }
 
 .surname-finish {
