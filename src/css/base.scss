@@ -67,8 +67,11 @@ nav {
             a {
                 color: $main-font-color;
                 display: inline-block;
-                padding: 0 1em;
                 transition: background-color 0.5s, color 0.5s;
+                padding: 0 0.7em;
+                @media screen and (min-width: $mobile-px) {
+                    padding: 0 1em;
+                }
 
                 &:hover, &:focus, &:active {
                     color: $navbar-hover-text-color;

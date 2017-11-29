@@ -204,10 +204,16 @@ nav ul li {
 nav ul li a {
   color: #333;
   display: inline-block;
-  padding: 0 1em;
   -webkit-transition: background-color 0.5s, color 0.5s;
   -o-transition: background-color 0.5s, color 0.5s;
   transition: background-color 0.5s, color 0.5s;
+  padding: 0 0.7em;
+}
+
+@media screen and (min-width: 920px) {
+  nav ul li a {
+    padding: 0 1em;
+  }
 }
 
 nav ul li a:hover, nav ul li a:focus, nav ul li a:active {
