@@ -23,7 +23,7 @@ body {
 header {
     @include animation(fadeindown, 1s, 0s);
     background-color: $main-toolbar-color;
-    
+
     h1 {
         margin: 0;
         float: left;
@@ -69,12 +69,12 @@ nav {
                 display: inline-block;
                 padding: 0 1em;
                 transition: background-color 0.5s, color 0.5s;
-                
+
                 &:hover, &:focus, &:active {
                     color: $navbar-hover-text-color;
                     background-color: darken($main-toolbar-color, 10%);
                 }
-                
+
             }
         }
     }
@@ -82,7 +82,7 @@ nav {
 
 .surname-finish {
     display: none;
-    
+
     @media screen and (min-width: $mobile-px) {
         display: inline;
     }
@@ -91,7 +91,7 @@ nav {
 .main-container {
     width: 95%;
     margin: 0 auto;
-    
+
     @media screen and (min-width: $mobile-px) {
         width: 80%;
     }
@@ -129,7 +129,7 @@ a {
     color: blue;
     text-decoration: none;
     transition: color, 0.5s;
-    
+
     &:hover {
         color: lighten(blue, 20%);
     }
@@ -163,7 +163,7 @@ pre code { // for bigger code "blocks"
 .social-buttons {
     list-style: none;
     padding-left: 0.5em;
-    
+
     li {
         float: left;
         margin: 0 0 1em 1em;
