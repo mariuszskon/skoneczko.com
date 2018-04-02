@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="scraperstyle.css">
 
 <?php
+  error_reporting(0); // sorry :( needed for legacy code to work without too many changes (detection if city found or not)
 
   $city=$_GET['city'];
   

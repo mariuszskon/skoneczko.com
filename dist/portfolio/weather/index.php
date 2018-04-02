@@ -36,6 +36,7 @@
         
           </form>
         
+        <div id="loading-msg" class="alert alert-info"><span class="glyphicon glyphicon-hourglass"></span> Loading...</div>
         
         <div id="success-msg" class="alert alert-success">Success!</div>
         

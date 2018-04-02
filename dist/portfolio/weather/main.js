@@ -10,21 +10,25 @@ $.get("scraper.php", function(data) {
 $("#mainButton").click(function(event) {
   
   event.preventDefault();
+
+  $("#success-msg").hide();
+  $("#error-msg-city").hide();
+  $("#error-msg").hide();
   
   if ($("#city").val()!="") {
+
+    $("#loading-msg").fadeIn();
   
     $.get("scraper.php?city="+$("#city").val(), function(data) {
+
+      $("#loading-msg").hide();
     
       if (data==defaultscraperdata) {
       
-        $("#success-msg").hide();
-        $("#error-msg-city").hide();
         $("#error-msg").fadeIn();
       
       } else {
       
-        $("#error-msg").hide();
-        $("#error-msg-city").hide();
         $("#success-msg").html(data).fadeIn();
       
       }
@@ -33,8 +37,6 @@ $("#mainButton").click(function(event) {
   
   } else {
     
-    $("#success-msg").hide();
-    $("#error-msg").hide();
     $("#error-msg-city").fadeIn();
   
   }
