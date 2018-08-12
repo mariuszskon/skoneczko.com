@@ -23,7 +23,7 @@ gulp.task('sass', function() {
 });
 
 gulp.task('html', function() {
-    gulp.src(['src/**/*.html', '!**/*~']) // don't copy backup files
+    gulp.src('src/**/*.html')
         .pipe(changed('dist/'))
         .pipe(debug({title: 'gulp-debug [html]:'}))
         .pipe(minifyHTML({conditionals: true}))
