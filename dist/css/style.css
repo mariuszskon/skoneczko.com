@@ -323,3 +323,7 @@ pre code {
   float: left;
   margin: 0 0 1em 1em;
 }
+
+.portfolio-container img {
+  width: 300px;
+}
