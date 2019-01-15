@@ -66,7 +66,7 @@ gulp.task('misc', function() {
         .pipe(changed('dist/'))
         .pipe(debug({title: 'gulp-debug [misc-favicon]:'}))
         .pipe(gulp.dest('dist/'));
-    
+
     //copy portfolio
     gulp.src(['src/portfolio/**/*', '!**/*.html']) // don't get the html
         .pipe(changed('dist/portfolio/'))
