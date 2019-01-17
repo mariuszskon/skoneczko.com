@@ -1,0 +1,511 @@
+* {
+    box-sizing: border-box;
+    outline: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    margin: 0;
+}
+
+header, h1, h2, h3, h4, h5, h6, nav ul li a {
+    font-family: 'Do Hyeon', sans-serif;
+    letter-spacing: 0.07em;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+p {
+    line-height: 2em;
+    text-align: left;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+a:link, a:visited {
+    color: hsla(3, 80%, 45%, 1);
+}
+
+a:hover {
+    color: hsla(3, 100%, 45%, 1);
+}
+
+a:active {
+    color: hsla(3, 100%, 20%, 1);
+}
+
+header img {
+    display: inline-block;
+    vertical-align: middle;
+    max-height: 3em;
+    margin: -1em 0.5em -1em 0;
+}
+
+h1 img {
+    width: 2em;
+    vertical-align: middle;
+}
+
+main > *, .container, footer > * {
+    width: 95%;
+    margin: 0 auto;
+}
+
+nav {
+    background-color: hsla(0, 0%, 92%, 1);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li.brand {
+    display: block;
+}
+
+nav ul li.brand a, nav ul li.brand a:link, nav ul li.brand a:visited {
+    background-color: hsla(0, 0%, 85%, 1);
+}
+
+nav ul li a {
+    display: block;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 1.5em 2em;
+    background-color: hsla(0, 0%, 92%, 1);
+}
+
+nav ul li a:link, nav ul li a:visited {
+    color: #333;
+}
+
+nav ul li a:hover, nav ul li a.current {
+    color: hsla(3, 80%, 45%, 1);
+    background-color: hsla(0, 0%, 85%, 1);
+}
+
+nav ul li a:active {
+    background-color: hsla(0, 0%, 60%, 1);
+}
+
+nav #cart-nav {
+    float: right;
+}
+
+nav #cart-nav span {
+    color: hsla(0, 0%, 92%, 1);
+    border-radius: 20%;
+    padding: 0.1em 0.4em;
+    background-color: #333;
+    transition: background-color 0.2s;
+}
+
+nav #cart-nav:hover span {
+    background-color: hsla(3, 80%, 45%, 1);
+}
+
+main {
+    text-align: center;
+}
+
+@media screen {
+    main > *:first-child {
+        padding-top: 2em;
+    }
+
+    main > *:last-child {
+        padding-bottom: 3em;
+    }
+}
+
+footer {
+    padding: 2em 0 1em 0;
+    background-color: hsla(0, 0%, 92%, 1);
+}
+
+footer > * {
+    margin-bottom: 0.5em;
+}
+
+form * {
+    font-family: inherit;
+}
+
+form input, form select, form textarea {
+    padding: 0.1em 0.3em;
+    border: 2px solid hsla(0, 0%, 92%, 1);
+    border-radius: 0.2em;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-size: inherit;
+}
+
+form input:focus, form select:focus {
+    border-color: #666;
+    box-shadow: 0 0 3px 5px hsla(0, 0%, 85%, 1);
+}
+
+form input:invalid {
+    border: 2px solid hsla(3, 80%, 45%, 1);
+}
+
+table {
+    border-collapse: collapse;
+    text-align: left;
+}
+
+table.cart {
+    width: 100%;
+}
+
+table.cart th, table.cart td {
+    padding: 1em;
+}
+
+table.cart thead tr, table.cart tfoot tr {
+    background-color: hsla(0, 0%, 85%, 1);
+}
+
+table.cart tbody tr:nth-child(2n) {
+    background-color: hsla(0, 0%, 92%, 1);
+}
+
+table.cart .title {
+    width: 50%;
+}
+
+table .numeric {
+    text-align: right;
+    width: 15%;
+}
+
+pre.debug {
+    background-color: white;
+    border: 2px dotted green;
+    white-space: pre-wrap;
+    padding: 1em;
+}
+
+.eyecatcher {
+    padding: 1em 0 3em 0;
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
+}
+
+.eyecatcher h1 {
+    margin-top: 0;
+}
+
+.eyecatcher p {
+    text-align: center;
+    line-height: 1.6em;
+    border-radius: 0.2em;
+    padding: 0.5em 0.2em;
+}
+
+.eyecatcher .big-button {
+    width: 6em;
+}
+
+.big-button, .big-button:link, .big-button:visited {
+    cursor: pointer;
+    display: inline-block;
+    background-color: hsla(3, 80%, 45%, 1);
+    color: #FFF;
+    font-size: 1em;
+    padding: 0.7em;
+    border-radius: 0.5em;
+    margin: 0.2em 1em;
+    border: 1px solid hsla(3, 20%, 40%, 1);
+    transition: background-color 0.2s;
+}
+
+.big-button:hover {
+    background-color: hsla(3, 100%, 45%, 1);
+}
+
+.big-button:active {
+    background-color: hsla(3, 100%, 20%, 1);
+}
+
+.pizza-background {
+    /* Public domain image used for educational purposes from
+       https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Supreme_pizza.jpg/2048px-Supreme_pizza.jpg */
+    background-image: url("../img/pizza-background.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.pizza-background h1, .pizza-background p {
+    color: hsla(0, 0%, 92%, 1);
+    background-color: hsla(3, 80%, 45%, 0.9);
+}
+
+.error {
+    font-style: italic;
+    color: hsla(3, 100%, 45%, 1);
+}
+
+.menu, .prices {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-item {
+    margin: 2rem 0;
+    padding: 2rem;
+}
+
+.menu-item * {
+    text-align: center;
+}
+
+.menu-item:nth-child(2n+1) {
+    background-color: hsla(0, 0%, 85%, 1);
+}
+
+.menu-item img {
+    max-width: 20vw;
+    border-radius: 50%;
+}
+
+.menu-item .prices li {
+    display: inline-block;
+    text-align: center;
+    margin: 0 0.5em;
+}
+
+/* abuse CSS3 pseudo classes for categorising purchases as "small", "medium" or "large",
+   but only if there are enough prices */
+.menu-item .prices li:first-child:nth-last-child(3)::before {
+    content: "S ";
+}
+
+.menu-item .prices li:nth-child(2):nth-last-child(2)::before {
+    content: "M ";
+}
+
+.menu-item .prices li:nth-child(3):nth-last-child(1)::before {
+    content: "L ";
+}
+
+.menu-item .prices li::before {
+    display: block;
+}
+
+.detail-image {
+    max-height: 40vh;
+    border-radius: 1em;
+}
+
+form.item-add {
+    margin-top: 3em;
+    text-align: center;
+}
+
+form.item-add > div {
+    margin-bottom: 1em;
+}
+
+form.item-add .qty-group input {
+    width: 3em;
+    text-align: center;
+}
+
+/* together with below font size of 1rem, this allows cleaner HTML code by eliminating whitespace issues */
+form.item-add .qty-group {
+    font-size: 0;
+}
+
+form.item-add .qty-group > * {
+    font-size: 1rem;
+    height: 2em;
+}
+
+/* z-index and relative position ensure shadow of input is above BOTH buttons */
+form.item-add .qty-group input {
+    z-index: 10;
+    position: relative;
+    border-radius: 0;
+}
+
+form.item-add .qty-group button {
+    z-index: 9;
+    position: relative;
+    width: 2em;
+    background-color: hsla(0, 0%, 92%, 1);
+    border: 1px solid hsla(0, 0%, 85%, 1);
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+form.item-add .qty-group button:hover, form.item-add .qty-group button:focus {
+    border-color: #666;
+    background-color: hsla(0, 0%, 85%, 1);
+}
+
+form.item-add .qty-group button:active {
+    background-color: hsla(0, 0%, 60%, 1);
+}
+
+form.item-add .qty-group button:first-child {
+    border-radius: 0.2em 0 0 0.2em;
+}
+
+form.item-add .qty-group button:last-child {
+    border-radius: 0 0.2em 0.2em 0;
+}
+
+form.item-add .price-list {
+    display: none;
+}
+
+form.item-add p.calculated-price {
+    text-align: center;
+}
+
+.print-button {
+    margin-left: 0;
+}
+
+#checkout-form > div > * {
+    display: inline;
+    vertical-align: middle;
+}
+
+#checkout-form .visa-small {
+    width: 3.5rem;
+    vertical-align: middle;
+    display: none; /* do not take up space (in case there is an error nearby) */
+    opacity: 0; /* like visibility: hidden, but can use css transitions :) */
+    transition: opacity 0.2s;
+}
+
+#checkout-form label {
+    display: inline-block;
+    width: 10em;
+}
+
+#checkout-form input, #checkout-form select, #checkout-form textarea {
+    width: 15em;
+}
+
+#checkout-form select {
+    text-align-last: center;
+}
+
+@media screen and (min-width: 768px) {
+    nav ul, main > *, .container, footer > * {
+        width: 80%;
+    }
+
+    nav ul li.brand {
+        display: inline-block;
+    }
+
+    main, .menu-item * {
+        text-align: left;
+    }
+
+    .menu-item {
+        font-size: 0; /* ugly hack to keep HTML code clean by eliminating whitespace between elements */
+        padding: 2rem 8rem;
+    }
+
+    .menu-item > * {
+        font-size: 1.5rem;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .menu-item img {
+        width: 20%;
+    }
+
+    .menu-item h3 {
+        margin: 0 0 1em 0;
+        vertical-align: top;
+    }
+
+    .menu-item .menu-item-content {
+        padding: 0 2em;
+        width: 60%;
+    }
+
+    .menu-item .prices {
+        text-align: right;
+        width: 20%;
+    }
+
+    .menu-item .prices li {
+        display: block;
+        margin: 0.5em 0;
+    }
+
+    .detail-image {
+        float: left;
+        max-height: 100%;
+        max-width: calc(50% - 3em);
+        margin-right: 3em;
+    }
+
+    /* clear floats caused by image */
+    .detail::after {
+        visibility: hidden;
+        display: block;
+        content: "";
+        clear: both;
+        height: 0;
+    }
+
+    .item-add * {
+        display: inline-block;
+    }
+
+    form.item-add > div {
+        margin: 0 1em 0 0;
+    }
+}
+
+@media print {
+    header, footer, .print-button {
+        display: none;
+    }
+
+    main {
+        text-align: left;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+}
+

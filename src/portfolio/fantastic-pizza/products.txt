@@ -1,0 +1,12 @@
+id	oid	title	description	option_human	price
+pz_fantas	s	Fantastic Special	Pizza with the lot. When in doubt, you can't go wrong with this one.	Small	7.00
+pz_fantas	m	Fantastic Special	Pizza with the lot. When in doubt, you can't go wrong with this one.	Medium	10.00
+pz_fantas	l	Fantastic Special	Pizza with the lot. When in doubt, you can't go wrong with this one.	Large	17.00
+pz_bbqmeat	s	BBQ Meat Lovers	Ham, bacon, salami, chicken and more.	Small	7.00
+pz_bbqmeat	m	BBQ Meat Lovers	Ham, bacon, salami, chicken and more.	Medium	10.00
+pz_bbqmeat	l	BBQ Meat Lovers	Ham, bacon, salami, chicken and more.	Large	17.00
+pz_veggie	s	Vegetarian	Tomato, cheese, olives, capsicum, onions, with some oregano.	Small	7.00
+pz_veggie	m	Vegetarian	Tomato, cheese, olives, capsicum, onions, with some oregano.	Medium	10.00
+pz_veggie	l	Vegetarian	Tomato, cheese, olives, capsicum, onions, with some oregano.	Large	17.00
+sd_garden	r	Garden	Fresh lettuce, cucumber, tomato, and crunchy onion.	Regular	8.00
+sd_greek	r	Greek	Traditional feta cheese together with cucumber, tomato and olives.	Regular	9.00
