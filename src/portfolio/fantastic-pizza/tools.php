@@ -53,9 +53,7 @@ function top_module($title) {
             <title><?=$title?></title>
 
             <link href="//fonts.googleapis.com/css?family=Do+Hyeon|Roboto" rel="stylesheet">
-            <link id="wireframecss" type="text/css" rel="stylesheet" href="../wireframe.css" disabled>
             <link id="stylecss" type="text/css" rel="stylesheet" href="css/style.css">
-            <script src="../wireframe.js"></script>
         </head>
 
         <body>
@@ -93,7 +91,6 @@ function bottom_module() { ?>
                 <div>Disclaimer: This website is not a real website. It was made for educational purposes.</div>
             </footer>
 
-            <script src="js/main.js"></script>
             <script src="js/item-add-form.js"></script>
 
     </body>
