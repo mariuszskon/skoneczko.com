@@ -15,18 +15,19 @@
   "bugs": {
     "url": "https://github.com/mariuszskon/skoneczko.com/issues"
   },
+  "browserslist": "last 3 versions",
   "devDependencies": {
     "gulp": "^4.0.2",
-    "gulp-autoprefixer": "~5.0.0",
-    "gulp-changed": "^3.2.0",
-    "gulp-clean-css": "^3.10.0",
+    "gulp-autoprefixer": "~7.0.0",
+    "gulp-changed": "^4.0.1",
+    "gulp-clean-css": "^4.2.0",
     "gulp-concat": "^2.6.1",
     "gulp-debug": "^4.0.0",
-    "gulp-imagemin": "^4.1.0",
-    "gulp-minify-html": "^1.0.6",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-imagemin": "^6.1.0",
     "gulp-rename": "~1.4.0",
     "gulp-sass": "~4.0.2",
-    "gulp-uglify": "^3.0.1"
+    "gulp-uglify": "^3.0.2"
   },
   "dependencies": {
     "natives": "^1.1.6"

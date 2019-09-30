@@ -6,7 +6,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var debug = require('gulp-debug');
 var changed = require('gulp-changed');
 var imagemin = require('gulp-imagemin');
-var minifyHTML = require('gulp-minify-html');
+var htmlmin = require('gulp-htmlmin');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 
@@ -14,7 +14,7 @@ gulp.task('sass', function() {
     return gulp.src('src/css/base.scss')
         .pipe(debug({title: 'gulp-debug [sass]:'}))
         .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
-        .pipe(autoprefixer({browsers: ['last 3 version']}))
+        .pipe(autoprefixer())
         .pipe(rename('style.css'))
         .pipe(gulp.dest('dist/css'))
         .pipe(rename({suffix: '.min'}))
@@ -22,13 +22,12 @@ gulp.task('sass', function() {
         .pipe(gulp.dest('dist/css'));
 });
 
-gulp.task('html', function(done) {
-    gulp.src('src/**/*.html')
+gulp.task('html', function() {
+    return gulp.src('src/**/*.html')
         .pipe(changed('dist/'))
         .pipe(debug({title: 'gulp-debug [html]:'}))
-        .pipe(minifyHTML({conditionals: true}))
+        .pipe(htmlmin())
         .pipe(gulp.dest('dist/'));
-    done();
 });
 
 // blog task separate, in case changes are to be made later
