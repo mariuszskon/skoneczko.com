@@ -26,7 +26,9 @@ gulp.task('html', function() {
     return gulp.src('src/**/*.html')
         .pipe(changed('dist/'))
         .pipe(debug({title: 'gulp-debug [html]:'}))
-        .pipe(htmlmin())
+        .pipe(htmlmin({
+            collapseWhitespace: true,
+        }))
         .pipe(gulp.dest('dist/'));
 });
 

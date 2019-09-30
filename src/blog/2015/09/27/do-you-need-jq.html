@@ -49,7 +49,7 @@
 request.open('GET', '/my/url', true);
 
 request.onload = function() {
-  if (request.status >= 200 && request.status < 400) {
+  if (request.status &gt;= 200 && request.status &lt; 400) {
     // Success!
     var resp = request.responseText;
   } else {
@@ -71,7 +71,7 @@ request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; cha
 
 // if you want to get the responseText, include the onload and onerror functions, otherwise you can simply leave them out!
 request.onload = function() {
-  if (request.status >= 200 && request.status < 400) {
+  if (request.status &gt;= 200 && request.status &lt; 400) {
     // Success!
     var resp = request.responseText;
   } else {
