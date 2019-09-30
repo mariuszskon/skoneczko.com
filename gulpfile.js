@@ -75,6 +75,14 @@ gulp.task('misc', function(done) {
         .pipe(debug({title: 'gulp-debug [misc-portfolio]:'}))
         .pipe(gulp.dest('dist/portfolio/'));
 
+    // copy GPG key
+    gulp.src('src/.well-known/**/*', {
+        dot: true,
+        base: 'src',
+    }).pipe(changed('src/.well-known/'))
+        .pipe(debug({title: 'gulp-debug [misc-openpgp]:'}))
+        .pipe(gulp.dest('dist/'));
+
     done();
 });
 
