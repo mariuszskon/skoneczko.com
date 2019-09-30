@@ -11,7 +11,7 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 
 gulp.task('sass', function() {
-    gulp.src('src/css/base.scss')
+    return gulp.src('src/css/base.scss')
         .pipe(debug({title: 'gulp-debug [sass]:'}))
         .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
         .pipe(autoprefixer({browsers: ['last 3 version']}))
@@ -22,31 +22,32 @@ gulp.task('sass', function() {
         .pipe(gulp.dest('dist/css'));
 });
 
-gulp.task('html', function() {
+gulp.task('html', function(done) {
     gulp.src('src/**/*.html')
         .pipe(changed('dist/'))
         .pipe(debug({title: 'gulp-debug [html]:'}))
         .pipe(minifyHTML({conditionals: true}))
         .pipe(gulp.dest('dist/'));
+    done();
 });
 
 // blog task separate, in case changes are to be made later
 gulp.task('blog', function() {
-    gulp.src('src/blog/**/*.php')
+    return gulp.src('src/blog/**/*.php')
         .pipe(changed('dist/blog/'))
         .pipe(debug({title: 'gulp-debug [blog]:'}))
         .pipe(gulp.dest('dist/blog/'));
 });
 
 gulp.task('images', function() {
-    gulp.src('src/img/**/*')
+    return gulp.src('src/img/**/*')
         .pipe(changed('dist/img/'))
         .pipe(debug({title: 'gulp-debug [images]:'}))
         .pipe(imagemin())
         .pipe(gulp.dest('dist/img/'));
 });
 
-gulp.task('js', function() {
+gulp.task('js', function(done) {
     gulp.src('src/js/*.js')
         .pipe(debug({title: 'gulp-debug [js]'}))
         .pipe(concat('all.js'))
@@ -58,10 +59,12 @@ gulp.task('js', function() {
         .pipe(concat('vendor.js'))
         // already uglified
         .pipe(gulp.dest('dist/js/'));
+
+    done();
 });
 
 // copy everything else that we may expect in the final build
-gulp.task('misc', function() {
+gulp.task('misc', function(done) {
     gulp.src('src/favicon.ico')
         .pipe(changed('dist/'))
         .pipe(debug({title: 'gulp-debug [misc-favicon]:'}))
@@ -72,6 +75,8 @@ gulp.task('misc', function() {
         .pipe(changed('dist/portfolio/'))
         .pipe(debug({title: 'gulp-debug [misc-portfolio]:'}))
         .pipe(gulp.dest('dist/portfolio/'));
+
+    done();
 });
 
-gulp.task('build', ['sass', 'html', 'blog', 'images', 'js', 'misc']);
+gulp.task('build', gulp.series('sass', 'html', 'blog', 'images', 'js', 'misc'));
