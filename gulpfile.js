@@ -81,7 +81,7 @@ gulp.task('misc', function(done) {
     gulp.src('src/.well-known/**/*', {
         dot: true,
         base: 'src',
-    }).pipe(changed('src/.well-known/'))
+    }).pipe(changed('dist/.well-known/'))
         .pipe(debug({title: 'gulp-debug [misc-openpgp]:'}))
         .pipe(gulp.dest('dist/'));
     gulp.src('src/key.asc')
