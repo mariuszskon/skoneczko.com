@@ -84,6 +84,10 @@ gulp.task('misc', function(done) {
     }).pipe(changed('src/.well-known/'))
         .pipe(debug({title: 'gulp-debug [misc-openpgp]:'}))
         .pipe(gulp.dest('dist/'));
+    gulp.src('src/key.asc')
+        .pipe(changed('dist/'))
+        .pipe(debug({title: 'gulp-debug [misc-openpgp]:'}))
+        .pipe(gulp.dest('dist/'));
 
     done();
 });
