@@ -92,4 +92,4 @@ gulp.task('misc', function(done) {
     done();
 });
 
-gulp.task('build', gulp.series('sass', 'html', 'blog', 'images', 'js', 'misc'));
+gulp.task('build', gulp.parallel('sass', 'html', 'blog', 'images', 'js', 'misc'));
