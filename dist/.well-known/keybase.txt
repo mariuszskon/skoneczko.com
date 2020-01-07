@@ -1,0 +1,67 @@
+==================================================================
+https://keybase.io/mariuszskon
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://www.skoneczko.com
+  * I am mariuszskon (https://keybase.io/mariuszskon) on keybase.
+  * I have a public key with fingerprint 61B2 8BAE 0207 7997 5087  EA57 F67E 394A E5A7 82E9
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101dca365e597dfe5a2547a71e3658208b70c1d9c2b797928782c2a3205f6233be60a",
+      "fingerprint": "61b28bae020779975087ea57f67e394ae5a782e9",
+      "host": "keybase.io",
+      "key_id": "f67e394ae5a782e9",
+      "kid": "0101dca365e597dfe5a2547a71e3658208b70c1d9c2b797928782c2a3205f6233be60a",
+      "uid": "3ea12ab37d5a73b5cf358e49f9cc4e19",
+      "username": "mariuszskon"
+    },
+    "service": {
+      "hostname": "www.skoneczko.com",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1578441103,
+  "expire_in": 157680000,
+  "prev": "eb229e916c35b57af0ad4224bfdfc6a819248ab4d8e03101bdfb5f0136b8f973",
+  "seqno": 3,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+
+owGtUltIFFEY3jWvibVIRmERnQrLlm3uZ2YLIgqCbkRJGZXrOTNn1mnbnXVnVlOz
+20NZGF0oSrJ7+OCb2s2gSBOLwofoCiEZQVvCSlFIlFpnFn3rsfNyON///d/3/T/n
+ZN4kV7b79qX3jcd8wdXuZ1+wq6xg5rU6gE2tBvjrQIikLrJbI5YdCBka8AOGZVhN
+RbwkElGBmk5ExIkCRJAlFJM5RsaQUVlNUTkMFahwMpQ5lUM8x4i6xPE8JhKDgBfo
+RiRIYtGYEbGprMRiTsaIMBwDoaJAkZEhQSLUJUh4RUDUhuoQhTZWmJbTQcNhZBGf
+YVKMPgKpeP/g/+fc8ZQcTxDLIcxDjRrxWFR1XpSJoOiKqgqEdXzjFolFUJhQdhjF
+jLhVa4XMCKj3AlqoMlTi7NYZZpxUXV3tcxhErQ2ZPtUMU41ozLRN1dxNyxW2HbX8
+TrtdE03xCQ6MKwWwEdHoPmlHFYlZBrXxs5Sp2oYjzYpQFgSWZXgvIHuiRowEjEgK
+lmSGHseHVAF/OSCY4xSisJLKi1iESGeQJnCcgHVNVyUkswonyAgLmkwYnm4UazoW
+dYblJSzrCuSBM1xlxAR+amWjII1pGcEIsuMxAuonH3Xz6S53tmv29Lnpez3rtt25
++1Y6vqUoc+IPZqQ5H9A1OcczgZQlssaKo/e2DLgzN/bMK2lr7ymuufLlycK1vR/W
+lF4t7dhZsKH7wsoff8627js878CJhq6MeAna1PyicRtb/kq4fEHYb/VuTmvLSS7f
+0Vw7AjKOjHqXrUIdh8baPesrv3WTtmvdnll5VvLIivmfvu7PKxx6bb48Ds50pjWO
+JKZEidVU1/Cze5+vpcgoDr/cmtDHivMHZ5X9nv1u+k1DOne+f2futFPbfz15XtHv
+Teb31Ymjjx+0hltnNKzt+Zhfi/qy7leEE3NW3FnafrA31/esPvjCM7Dy8I3CwT0H
+s24Oe+YnWoYfLfm+63FT59zPF28tSD4dLh0Yut71ZtHrbHencnrxw/gCdupf
+=UWSk
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/mariuszskon
+
+==================================================================
+
