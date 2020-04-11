@@ -222,7 +222,7 @@ p.interactive()</code></pre>
 You might need this: thisisasecret
 Hash: 5ee9fafd697e40593d66bef8427d40f8beca6921</pre></p>
                         <p>The title of the challenge is a huge hint - that the hash is actually some sort of MAC. If we use a naive analyser to determine what type the hash is, such as <a href="https://www.tunnelsup.com/hash-analyzer/">this one</a>, we are told it is sha1. Of course if we try to crack this now we get nowhere because we have not used <code>thisisasecret</code> and no MAC stuff was performed. Let's have a look what hashcat can do...</p>
-                        <pre><code class="lang-bash">$ hashcat --help | grep -i sha | grep -i mac
+                        <pre><code class="plaintext">$ hashcat --help | grep -i sha | grep -i mac
     150 | HMAC-SHA1 (key = $pass)                          | Raw Hash, Authenticated
     160 | HMAC-SHA1 (key = $salt)                          | Raw Hash, Authenticated
    1450 | HMAC-SHA256 (key = $pass)                        | Raw Hash, Authenticated
