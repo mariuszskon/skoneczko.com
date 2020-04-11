@@ -160,7 +160,7 @@ code {
 
 pre code { // for bigger code "blocks"
     display: block; // so that the background-color works nicely
-    padding: 10px;
+    padding: 1em 2em !important;
 }
 
 .social-buttons {
