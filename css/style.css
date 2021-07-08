@@ -1,6 +1,8 @@
-* {
+body {
+    margin: 0;
     font-family: sans-serif;
     color: #333;
+    line-height: 1.5em;
 }
 
 a {
@@ -119,6 +121,28 @@ a:hover {
     text-align: left;
 }
 
+.reading-column {
+    width: 95%;
+    margin: 1em auto;
+}
+
+.date-posted {
+    color: #777;
+}
+
+code {
+    color: #839496;
+    background-color: #002b36;
+    border-radius: 6px;
+    padding: 0.2em;
+}
+
+pre code {
+    display: block;
+    overflow-x: auto;
+    padding: 1em 2em;
+}
+
 @keyframes fade-in-down {
     0% {
         opacity: 0;
@@ -134,5 +158,9 @@ a:hover {
 @media screen and (min-width:720px) {
     .projects {
         flex-direction: row;
+    }
+
+    .reading-column {
+        width: 60%;
     }
 }
