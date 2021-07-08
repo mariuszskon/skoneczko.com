@@ -135,6 +135,7 @@ code {
     background-color: #002b36;
     border-radius: 6px;
     padding: 0.2em;
+    font-size: 1rem;
 }
 
 pre code {
