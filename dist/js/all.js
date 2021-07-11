@@ -1,1 +1,0 @@
-!function(){for(var l=document.querySelectorAll(".skills > li"),i=0;i<l.length;i++)l[i].classList.add("anim-skill-item","anim-skill-left"),function(l,i){setTimeout(function(){i[l].classList.remove("anim-skill-left")},500*l+1200)}(i,l)}();
